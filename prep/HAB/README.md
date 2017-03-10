@@ -6,7 +6,7 @@ Saya gunakan folder ini untuk mengumpulkan data OHI+Bali habitat
 - data source: Laporan Akhir RZWP3K Bali 2015
 - date accessed: March 10, 2017
 - processing plan:
-
+Rubah1
 
 It is best to script (for example, in the R programming language) as much as you can so that it is transparent and reproducible. 
 
