@@ -1,13 +1,12 @@
 # README
 
-Use these folder to organize and explore data for your OHI assessment. Edit this README file to describe the data you explore and how you process them. 
+Saya gunakan folder ini untuk mengumpulkan data OHI+Bali habitat
 
-For example, you could include: 
+- data name:mangrove_Bali_2017 
+- data source: Laporan Akhir RZWP3K Bali 2015
+- date accessed: March 10, 2017
+- processing plan:
 
-- data source
-- data url or website
-- date accessed, contact information
-- processing plan
 
 It is best to script (for example, in the R programming language) as much as you can so that it is transparent and reproducible. 
 
