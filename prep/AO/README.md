@@ -9,3 +9,4 @@ aaa
 tambah
 edit
 tambah komponen ketahanan pangan
+tambah2
