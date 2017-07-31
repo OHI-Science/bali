@@ -11,4 +11,4 @@ setwd(dir_cp)
 dir_layers <- '~/github/bali/prep/Cp'
 
 # read in raw data file
-cp_raw <- read(file.path(dir_cp, 'abration.csv')
+cp_raw <- read_csv(file.path(dir_cp,'abration.csv'))
