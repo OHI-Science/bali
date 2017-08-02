@@ -8,7 +8,7 @@ library(stringr) # install.packages('stringr')
 dir_cp <- '~/github/bali/prep/cp'
 setwd(dir_cp)
 
-dir_layers <- '~/github/bali/prep/Cp'
+dir_layers <- '~/github/bali/prep/cp'
 
 # read in raw data file
-cp_raw <- read_csv(file.path(dir_cp,'abration.csv'))
+cp_raw <- read_csv(file.path(dir_cp,'cp_abrasion.csv'))
