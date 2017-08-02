@@ -12,3 +12,7 @@ For example, you could include:
 It is best to script (for example, in the R programming language) as much as you can so that it is transparent and reproducible. 
 
 The [OHI Manual R tutorials for OHI](http://ohi-science.org/manual/#appendix-5-r-tutorials-for-ohi) has instruction and resources about how to work with data in R. 
+
+## Data Information:
+hab_coral_reef; hab_mangrove; hab_seagrass data provide by DLH Province 2016
+source: excel data in ......Google Drive\IKL Bali (OHI+) Folder\01_Data\01_Oleh Institusi\Dinas Lingkungan Hidup\Bahan Rapat Tim
