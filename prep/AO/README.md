@@ -10,3 +10,5 @@ tambah
 edit
 tambah komponen ketahanan pangan
 tambah2
+
+ao_catchment adalah data perikanan tangkap laut tahunan dengan satuan adalah ton sumber data adalah dirjen perikanan tangkap, 2015 dalam BPS, 2015
