@@ -1,5 +1,6 @@
-test
-
-data
-
-source
+data sources carbon stock (remote sensing calculation, IMRO (2017))
+abg = above ground biomass (ton/ha)
+bgb = below ground biomass (ton/ha)
+tab = total accumulation biomass (ton/ha)
+tcs = Total Carbon Stocks (ton/ha)
+acs = above-ground carbon stocks (ton/ha)
