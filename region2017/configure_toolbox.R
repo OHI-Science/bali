@@ -12,7 +12,7 @@
 
 ## load required packages after checking whether they are already installed
 packages_required  <- c('ohicore', 'tidyverse', 'stringr', 'zoo')
-packages_check     <- pkgs_required[!pkgs_required %in% (.packages())]
+packages_check     <- packages_required[!packages_required %in% (.packages())]
 if(length(packages_check)) install.packages(packages_check)
 packages_installed <- sapply(packages_required, FUN = function(x) library(x, character.only = TRUE))
 
