@@ -4,13 +4,14 @@
 ## - configure_toolbox.r ensures your files are properly configured for `ohicore`.
 ## - The `ohicore` function CalculateAll() calculates OHI scores.
 
+## set working directory for all OHI calculations
+setwd("~/github/bali/region2017")
 
 ## run the configure_toolbox.r script to check configuration
-setwd("region2017")
 source("configure_toolbox.r")
 
 ## calculate scenario scores
-scores = ohicore::CalculateAll(conf, layers)
+scores <- ohicore::CalculateAll(conf, layers)
 
 ## save scores as scores.csv
 write.csv(scores, 'scores.csv', na='', row.names=FALSE)
