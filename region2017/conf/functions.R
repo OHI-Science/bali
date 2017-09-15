@@ -1,65 +1,22 @@
-Setup = function(){
-  if(file.exists('eez2013/temp/referencePoints.csv')){file.remove('temp/referencePoints.csv')}
-  referencePoints <- data.frame(goal=as.character(),
-                                method = as.character(),
-                                reference_point = as.character())
-  write.csv(referencePoints, 'temp/referencePoints.csv', row.names=FALSE)
-}
+## functions.R.
+## Each OHI goal model is a separate R function.The function name is the 2- or 3- letter code, for example FIS is the Fishing subgoal of Food Provision (which is FP).
 
-# useful function for compiling multiple data layers
-# only works when the variable names are the same across datasets
-# (e.g., coral, seagrass, and mangroves)
-SelectData2 <- function(layer_names){
-  data <- data.frame()
-  for(e in layer_names){ # e="le_jobs_cur_base_value"
-    data_new <- get_data_year(layer_nm=e, layers=layers)
-    names(data_new)[which(names(data_new) == paste0(e, "_year"))] <- "data_year"
-    data <- rbind(data, data_new)
-  }
-  return(data)
-}
+## These models originate from Global OHI assessments (ohi-global), and should be tailored to represent the charastics, priorities, and data in your assessment area.
 
-# function to link data and scenario years based on
-# conf/scenario_data_years.csv information
+FIS <- function(layers){
 
-get_data_year <- function(layer_nm, layers=layers) { #layer_nm="le_wage_cur_base_value"
+  ## read in layers
+  ## catch data
+  c  <- layers$data$fis_meancatch %>%
+    select(rgn_id, year, stock_id_taxonkey, catch = mean_catch)
 
-  all_years <- conf$scenario_data_years %>%
-    mutate(scenario_year= as.numeric(scenario_year),
-           data_year = as.numeric(data_year)) %>%
-    filter(layer_name %in% layer_nm) %>%
-    select(layer_name, scenario_year, year=data_year)
+  ## b_bmsy data
+  b  <- layers$data$fis_b_bmsy %>%
+    select(rgn_id, stock_id, year, bbmsy)
 
+  ## set data year for assessment
+  data_year <- max(c$year)
 
-  layer_vals <- layers$data[[layer_nm]]
-
-  layers_years <- all_years %>%
-    left_join(layer_vals, by="year") %>%
-    select(-layer)
-
-  names(layers_years)[which(names(layers_years)=="year")] <- paste0(layer_nm, "_year")
-
-  return(layers_years)
-}
-
-FIS = function(layers){
-
-  status_year <- 2010
-
-  #catch data
-  c = SelectLayersData(layers, layers='fis_meancatch', narrow = TRUE) %>%
-    select(
-      rgn_id    = id_num,
-      stock_id_taxonkey = category,
-      year,
-      catch          = val_num)
-  # b_bmsy data
-  b = SelectLayersData(layers, layer='fis_b_bmsy', narrow = TRUE) %>%
-    select(
-      rgn_id         = id_num,
-      stock_id      = category,
-      year,
-      bmsy           = val_num)
 
   # The following stocks are fished in multiple regions and have high b/bmsy values
   # Due to the underfishing penalty, this actually penalizes the regions that have the highest
@@ -69,13 +26,13 @@ FIS = function(layers){
   high_bmsy <- c('Katsuwonus_pelamis-71', 'Clupea_harengus-27', 'Trachurus_capensis-47', 'Sardinella_aurita-34', 'Scomberomorus_cavalla-31')
 
   b <- b %>%
-    mutate(bmsy = ifelse(stock_id %in% high_bmsy, 1, bmsy))
+    mutate(bbmsy = ifelse(stock_id %in% high_bmsy, 1, bbmsy))
 
 
   # separate out the stock_id and taxonkey:
   c <- c %>%
     mutate(stock_id_taxonkey = as.character(stock_id_taxonkey)) %>%
-    mutate(taxon_key = stringr::str_sub(stock_id_taxonkey, -6, -1)) %>%
+    mutate(taxon_key = str_sub(stock_id_taxonkey, -6, -1)) %>%
     mutate(stock_id = substr(stock_id_taxonkey, 1, nchar(stock_id_taxonkey)-7)) %>%
     mutate(catch = as.numeric(catch)) %>%
     mutate(year = as.numeric(as.character(year))) %>%
@@ -85,15 +42,15 @@ FIS = function(layers){
 
   # general formatting:
   b <- b %>%
-    mutate(bmsy = as.numeric(bmsy)) %>%
+    mutate(bbmsy = as.numeric(bbmsy)) %>%
     mutate(rgn_id = as.numeric(as.character(rgn_id))) %>%
     mutate(year = as.numeric(as.character(year))) %>%
     mutate(stock_id = as.character(stock_id))
 
 
-  # ------------------------------------------------------------------------
+  ####
   # STEP 1. Calculate scores for Bbmsy values
-  # -----------------------------------------------------------------------
+  ####
   #  *************NOTE *****************************
   #  These values can be altered
   #  ***********************************************
@@ -102,27 +59,27 @@ FIS = function(layers){
   lowerBuffer <- 0.95
   upperBuffer <- 1.05
 
-  b$score = ifelse(b$bmsy < lowerBuffer, b$bmsy,
-                   ifelse (b$bmsy >= lowerBuffer & b$bmsy <= upperBuffer, 1, NA))
+  b$score = ifelse(b$bbmsy < lowerBuffer, b$bbmsy,
+                   ifelse (b$bbmsy >= lowerBuffer & b$bbmsy <= upperBuffer, 1, NA))
   b$score = ifelse(!is.na(b$score), b$score,
-                   ifelse(1 - alpha*(b$bmsy - upperBuffer) > beta,
-                          1 - alpha*(b$bmsy - upperBuffer),
+                   ifelse(1 - alpha*(b$bbmsy - upperBuffer) > beta,
+                          1 - alpha*(b$bbmsy - upperBuffer),
                           beta))
 
 
-  # ------------------------------------------------------------------------
+  ####
   # STEP 1. Merge the b/bmsy data with catch data
-  # -----------------------------------------------------------------------
+  ####
   data_fis <- c %>%
     left_join(b, by=c('rgn_id', 'stock_id', 'year')) %>%
-    select(rgn_id, stock_id, year, taxon_key, catch, bmsy, score)
+    select(rgn_id, stock_id, year, taxon_key, catch, bbmsy, score)
 
 
-  # ------------------------------------------------------------------------
+  ###
   # STEP 2. Estimate scores for taxa without b/bmsy values
   # Median score of other fish in the region is the starting point
   # Then a penalty is applied based on the level the taxa are reported at
-  # -----------------------------------------------------------------------
+  ###
 
   ## this takes the median score within each region
   data_fis_gf <- data_fis %>%
@@ -158,16 +115,16 @@ FIS = function(layers){
   gap_fill_data <- data_fis_gf %>%
     mutate(gap_fill = ifelse(is.na(penalty), "none", "median")) %>%
     select(rgn_id, stock_id, taxon_key, year, catch, score, gap_fill) %>%
-    filter(year == status_year)
+    filter(year == data_year)
   write.csv(gap_fill_data, 'temp/FIS_summary_gf.csv', row.names=FALSE)
 
   status_data <- data_fis_gf %>%
     select(rgn_id, stock_id, year, catch, score)
 
 
-  # ------------------------------------------------------------------------
+  ###
   # STEP 4. Calculate status for each region
-  # -----------------------------------------------------------------------
+  ###
 
   # 4a. To calculate the weight (i.e, the relative catch of each stock per region),
   # the mean catch of taxon i is divided by the
@@ -184,18 +141,21 @@ FIS = function(layers){
     summarize(status = prod(score^wprop)) %>%
     ungroup()
 
-  # ------------------------------------------------------------------------
+  ###
   # STEP 5. Get yearly status and trend
-  # -----------------------------------------------------------------------
+  ###
 
   status <-  status_data %>%
-    filter(year==status_year) %>%
+    filter(year==data_year) %>%
     mutate(
       score     = round(status*100, 1),
       dimension = 'status') %>%
-    select(region_id=rgn_id, score, dimension)
+    select(rgn_id, score, dimension)
 
-  trend_years <- status_year:(status_year-4)
+
+  # calculate trend
+
+  trend_years <- (data_year-4):(data_year)
   first_trend_year <- min(trend_years)
 
   trend <- status_data %>%
@@ -203,7 +163,7 @@ FIS = function(layers){
     group_by(rgn_id) %>%
     do(mdl = lm(status ~ year, data=.),
        adjust_trend = .$status[.$year == first_trend_year]) %>%
-    summarize(region_id = rgn_id,
+    summarize(rgn_id,
               score = round(coef(mdl)['year']/adjust_trend * 5, 4),
               dimension = 'trend') %>%
     ungroup() %>%
@@ -212,31 +172,32 @@ FIS = function(layers){
 
   # assemble dimensions
   scores <- rbind(status, trend) %>%
+    dplyr::rename(region_id = rgn_id) %>%
     mutate(goal='FIS') %>%
-    filter(region_id != 255)
-  scores <- data.frame(scores)
+    data.frame()
 
   return(scores)
 }
 
-MAR = function(layers){
+MAR <- function(layers){
 
-  status_year <- 2014
+  ## read in layers
+  harvest_tonnes <- layers$data$mar_harvest_tonnes %>%
+    select(rgn_id, taxa_code, year, tonnes)
 
-  # layers used: mar_harvest_tonnes, mar_harvest_species, mar_sustainability_score, mar_coastalpopn_inland25mi, mar_trend_years
-  harvest_tonnes <- SelectLayersData(layers, layers='mar_harvest_tonnes', narrow = TRUE) %>%
-    select(rgn_id=id_num, species_code=category, year, tonnes=val_num)
+  sustainability_score <- layers$data$mar_sustainability_score %>%
+    select(rgn_id, taxa_code, sust_coeff)
 
-  sustainability_score <- SelectLayersData(layers, layers='mar_sustainability_score', narrow = TRUE) %>%
-    select(rgn_id=id_num, species_code=category, sust_coeff=val_num)
+  popn_inland25mi <- layers$data$mar_coastalpopn_inland25mi %>%
+    select(rgn_id, year, popsum) %>%
+    mutate(popsum = popsum + 1)  # so 0 values do not cause errors when logged
 
-  popn_inland25mi <- SelectLayersData(layers, layers='mar_coastalpopn_inland25mi', narrow = TRUE) %>%
-    select(rgn_id=id_num, year, popsum=val_num) %>%
-    mutate(popsum = popsum + 1)
+  ## set data year for assessment
+  data_year <- max(harvest_tonnes$year)
 
-
+  ## combine layers
   rky <-  harvest_tonnes %>%
-    left_join(sustainability_score, by = c('rgn_id', 'species_code'))
+    left_join(sustainability_score, by = c('rgn_id', 'taxa_code'))
 
   # fill in gaps with no data
   rky <- spread(rky, year, tonnes)
@@ -246,8 +207,8 @@ MAR = function(layers){
   # 4-year rolling mean of data
   m <- rky %>%
     mutate(year = as.numeric(as.character(year))) %>%
-    group_by(rgn_id, species_code, sust_coeff) %>%
-    arrange(rgn_id, species_code, year) %>%
+    group_by(rgn_id, taxa_code, sust_coeff) %>%
+    arrange(rgn_id, taxa_code, year) %>%
     mutate(sm_tonnes = zoo::rollapply(tonnes, 4, mean, na.rm=TRUE, partial=TRUE)) %>%
     ungroup()
 
@@ -267,7 +228,7 @@ MAR = function(layers){
 
   # get reference quantile based on argument years
   ref_95pct_data <- ry %>%
-    filter(year <= status_year)
+    filter(year <= data_year)
 
   ref_95pct <- quantile(ref_95pct_data$mar_pop, 0.95, na.rm=TRUE)
 
@@ -275,25 +236,19 @@ MAR = function(layers){
   ry_ref = ref_95pct_data %>%
     arrange(mar_pop) %>%
     filter(mar_pop >= ref_95pct)
-  message(sprintf('95th percentile for MAR ref pt is: %s\n', ref_95pct)) # rgn_id 25 = Thailand
-  message(sprintf('95th percentile rgn_id for MAR ref pt is: %s\n', ry_ref$rgn_id[1])) # rgn_id 25 = Thailand
-
-  rp <- read.csv('temp/referencePoints.csv', stringsAsFactors=FALSE) %>%
-    rbind(data.frame(goal = "MAR", method = "spatial 95th quantile",
-                     reference_point = paste0("region id: ", ry_ref$rgn_id[1], ' value: ', ref_95pct)))
-  write.csv(rp, 'temp/referencePoints.csv', row.names=FALSE)
-
+  message(sprintf('95th percentile for MAR ref pt is: %s\n', ref_95pct))
+  message(sprintf('95th percentile rgn_id for MAR ref pt is: %s\n', ry_ref$rgn_id[1]))
 
   ry = ry %>%
     mutate(status = ifelse(mar_pop / ref_95pct > 1,
                            1,
                            mar_pop / ref_95pct))
   status <- ry %>%
-    filter(year == status_year) %>%
+    filter(year == data_year) %>%
     select(rgn_id, status) %>%
     mutate(status = round(status*100, 2))
 
-  trend_years <- (status_year-4):(status_year)
+  trend_years <- (data_year-4):(data_year)
   first_trend_year <- min(trend_years)
 
   # get MAR trend
@@ -327,9 +282,9 @@ MAR = function(layers){
 
 FP = function(layers, scores){
 
-  # weights
-  w <-  SelectLayersData(layers, layers='fp_wildcaught_weight', narrow = TRUE) %>%
-    select(region_id = id_num, w_FIS = val_num); head(w)
+  ## read in layers for weights
+  w <-  layers$data$fp_wildcaught_weight %>%
+    select(region_id = rgn_id, year, w_FIS = w_fis)
 
   # scores
   s <- scores %>%
@@ -571,7 +526,7 @@ NP <- function(scores, layers){
     gap_fill <- np_exp %>%
       mutate(gap_fill = ifelse(is.na(exposure), "prod_average", 0)) %>%
       select(rgn_id, product, year, gap_fill)
-  ##  write.csv(gap_fill, 'eez/temp/NP_exposure_gapfill.csv', row.names=FALSE)
+    ##  write.csv(gap_fill, 'eez/temp/NP_exposure_gapfill.csv', row.names=FALSE)
 
     ### add exposure for countries with (habitat extent == NA)
     np_exp <- np_exp %>%
@@ -883,10 +838,10 @@ CP <- function(layers){
 
 
 
-  ## set ranks for each habitat
-  habitat.rank <- c('coral'            = 4,
-                    'mangrove'         = 4,
-                    'seagrass'         = 1)
+    ## set ranks for each habitat
+    habitat.rank <- c('coral'            = 4,
+                      'mangrove'         = 4,
+                      'seagrass'         = 1)
 
 
   ## limit to CP habitats and add rank
@@ -949,9 +904,9 @@ TR = function(layers) {
 
   ## read in layers
   tourism  <- layers$data[['tr_jobs_pct_tourism']] %>%
-      select(-layer)
+    select(-layer)
   sustain <- layers$data[['tr_sustainability']] %>%
-      select(-layer)
+    select(-layer)
 
   tr_data  <- full_join(tourism, sustain, by = c('rgn_id', 'year'))
 
