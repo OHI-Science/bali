@@ -6,7 +6,8 @@
 
 
 ## run the configure_toolbox.r script to check configuration
-source("~/github/bali/region2017/configure_toolbox.r")
+setwd("region2017")
+source("configure_toolbox.r")
 
 ## calculate scenario scores
 scores = ohicore::CalculateAll(conf, layers)

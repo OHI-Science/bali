@@ -16,8 +16,6 @@ packages_check     <- packages_required[!packages_required %in% (.packages())]
 if(length(packages_check)) install.packages(packages_check)
 packages_installed <- sapply(packages_required, FUN = function(x) library(x, character.only = TRUE))
 
-setwd("~/github/bali/region2017")
-
 ## load scenario configuration
 conf = ohicore::Conf('conf')
 

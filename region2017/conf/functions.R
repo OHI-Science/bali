@@ -843,99 +843,74 @@ CS <- function(layers){
 
 
 CP <- function(layers){
+
+  ### Notes from Julie and Hanggar's Skype meeting Sept 15
+  # ## use habitat data here; you'll use habitat data in 3 goals probably: HAB, CP, CS.
+  #
+  # ## read in layers
+  #
+  # abrasion = ohicore::SelectLayersData(layers, layers=c('cp_abrasion')) %>%
+  #   select(region_id = id_num, abrasion_km=val_num, year)
+  #
+  # ## now you'll write your formula for CP with abrasion data.
+  # ## sometimes it helps to write the equation and then write it in R. See TR goal
+  #
+  # ## your formula will be something about abrasion_now / abrasion_you'd_like???? 0
+  # ## abrasion_you'd_like is your reference point. So what is important in Bali?
+  #
+
+  ## read in layers for coastal protection - they must be registered in layers.csv first
+  extent_lyrs <- c('hab_coral_reef', 'hab_mangrove', 'hab_seagrass')
+
   ## read in layers
-  scen_year <- 2014 ## TODO Mel howo to access this layers$data$scenario_year
+  coral <- layers$data[['hab_coral_reef']] %>%
+    select(rgn_id, year, area_ha) %>%
+    mutate(habitat = 'coral')
 
-  # layers for coastal protection
-  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_saltmarsh_extent', 'hab_coral_extent', 'hab_seaice_extent')
-  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_saltmarsh_health', 'hab_coral_health', 'hab_seaice_health')
-  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_saltmarsh_trend', 'hab_coral_trend', 'hab_seaice_trend')
+  mangrove <- layers$data[['hab_mangrove']] %>%
+    select(rgn_id, year, area_ha) %>%
+    mutate(habitat = 'mangrove')
 
-  # get data together:
-  extent <- SelectData2(extent_lyrs) %>%
-    filter(!(habitat %in% "seaice_edge")) %>%
-    filter(scenario_year == scen_year) %>%
-    select(region_id = rgn_id, habitat, extent=km2) %>%
-    mutate(habitat = as.character(habitat))
+  seagrass <- layers$data[['hab_seagrass']] %>%
+    select(rgn_id, year, area_ha) %>%
+    mutate(habitat = 'seagrass')
 
-  health <- SelectData2(health_lyrs) %>%
-    filter(!(habitat %in% "seaice_edge")) %>%
-    filter(scenario_year == scen_year) %>%
-    select(region_id = rgn_id, habitat, health) %>%
-    mutate(habitat = as.character(habitat))
 
-  trend <- SelectData2(trend_lyrs) %>%
-    filter(!(habitat %in% "seaice_edge")) %>%
-    filter(scenario_year == scen_year) %>%
-    select(region_id = rgn_id, habitat, trend) %>%
-    mutate(habitat = as.character(habitat))
+  ## combine layers
+  d <- coral %>%
+    left_join(mangrove, by = c('rgn_id', 'year')) %>%
+    left_join(seagrass, by = c('rgn_id', 'year')) %>%
 
-  ## sum mangrove_offshore + mangrove_inland1km = mangrove to match with extent and trend
-  mangrove_extent <- extent %>%
-    filter(habitat %in% c('mangrove_inland1km','mangrove_offshore'))
 
-  if (nrow(mangrove_extent) > 0){
-    mangrove_extent <- mangrove_extent %>%
-      group_by(region_id) %>%
-      summarize(extent = sum(extent, na.rm = TRUE)) %>%
-      mutate(habitat='mangrove') %>%
-      ungroup()
-  }
-
-  extent <- extent %>%
-    filter(!habitat %in% c('mangrove','mangrove_inland1km','mangrove_offshore')) %>%  #do not use all mangrove
-    rbind(mangrove_extent)  #just the inland 1km and offshore
-
-  ## join layer data
-  d <-  extent %>%
-    full_join(health, by=c("region_id", "habitat")) %>%
-    full_join(trend, by=c("region_id", "habitat"))
 
   ## set ranks for each habitat
   habitat.rank <- c('coral'            = 4,
                     'mangrove'         = 4,
-                    'saltmarsh'        = 3,
-                    'seagrass'         = 1,
-                    'seaice_shoreline' = 4)
+                    'seagrass'         = 1)
+
 
   ## limit to CP habitats and add rank
   d <- d %>%
     filter(habitat %in% names(habitat.rank)) %>%
     mutate(
-      rank = habitat.rank[habitat],
-      extent = ifelse(extent==0, NA, extent))
+      rank   = habitat.rank[habitat],
+      area_ha = ifelse(area_ha==0, NA, area_ha))
 
 
   # status
   scores_CP <- d %>%
-    filter(!is.na(rank) & !is.na(health) & !is.na(extent)) %>%
+    filter(!is.na(rank) & !is.na(health) & !is.na(area_ha)) %>%
     group_by(region_id) %>%
-    summarize(score = pmin(1, sum(rank * health * extent, na.rm=TRUE) /
-                             (sum(extent * rank, na.rm=TRUE)) ) * 100) %>%
+    summarize(score = pmin(1, sum(rank * health * area_ha, na.rm=TRUE) /
+                             (sum(area_ha * rank, na.rm=TRUE)) ) * 100) %>%
     mutate(dimension = 'status') %>%
     ungroup()
 
   # trend
   d_trend <- d %>%
-    filter(!is.na(rank) & !is.na(trend) & !is.na(extent))
+    filter(!is.na(rank) & !is.na(trend) & !is.na(area_ha))
 
-  if (nrow(d_trend) > 0 ){
-    scores_CP <- dplyr::bind_rows(
-      scores_CP,
-      d_trend %>%
-        group_by(region_id) %>%
-        summarize(
-          score = sum(rank * trend * extent, na.rm=TRUE) / (sum(extent*rank, na.rm=TRUE)),
-          dimension = 'trend'))
-  } else { # if no trend score, assign NA
-    scores_CP <- dplyr::bind_rows(
-      scores_CP,
-      d %>%
-        group_by(rgn_id) %>%
-        summarize(
-          score = NA,
-          dimension = 'trend'))
-  }
+
 
   ## finalize scores_CP
   scores_CP <- scores_CP %>%
@@ -943,19 +918,15 @@ CP <- function(layers){
       goal = 'CP') %>%
     select(region_id, goal, dimension, score)
 
-  ## reference points
-  # write_ref_pts(goal = "CP",
-  #               method= "Health/condition variable based on current vs. historic extent",
-  #               ref_pt = "varies for each region/habitat")
 
   ## create weights file for pressures/resilience calculations
 
-  weights <- extent %>%
-    filter(extent > 0) %>%
+  weights <- area_ha %>%
+    filter(area_ha > 0) %>%
     mutate(rank = habitat.rank[habitat]) %>%
-    mutate(extent_rank = extent*rank) %>%
+    mutate(area_ha_rank = area_ha*rank) %>%
     mutate(layer = "element_wts_cp_km2_x_protection") %>%
-    select(rgn_id=region_id, habitat, extent_rank, layer)
+    select(rgn_id=region_id, habitat, area_ha_rank, layer)
 
   layers$data$element_wts_cp_km2_x_protection <- weights
 
