@@ -8,11 +8,11 @@ FIS <- function(layers){
   ## read in layers
   ## catch data
   c  <- layers$data$fis_meancatch %>%
-    select(rgn_id, year, stock_id_taxonkey, catch = mean_catch)
+    select(region_id = rgn_id, year, stock_id_taxonkey, catch = mean_catch)
 
   ## b_bmsy data
   b  <- layers$data$fis_b_bmsy %>%
-    select(rgn_id, stock_id, year, bbmsy)
+    select(region_id = rgn_id, stock_id, year, bbmsy)
 
   ## set data year for assessment
   data_year <- max(c$year)
@@ -36,14 +36,14 @@ FIS <- function(layers){
     mutate(stock_id = substr(stock_id_taxonkey, 1, nchar(stock_id_taxonkey)-7)) %>%
     mutate(catch = as.numeric(catch)) %>%
     mutate(year = as.numeric(as.character(year))) %>%
-    mutate(rgn_id = as.numeric(as.character(rgn_id))) %>%
+    mutate(region_id = as.numeric(as.character(region_id))) %>%
     mutate(taxon_key = as.numeric(as.character(taxon_key))) %>%
-    select(rgn_id, year, stock_id, taxon_key, catch)
+    select(region_id, year, stock_id, taxon_key, catch)
 
   # general formatting:
   b <- b %>%
     mutate(bbmsy = as.numeric(bbmsy)) %>%
-    mutate(rgn_id = as.numeric(as.character(rgn_id))) %>%
+    mutate(region_id = as.numeric(as.character(region_id))) %>%
     mutate(year = as.numeric(as.character(year))) %>%
     mutate(stock_id = as.character(stock_id))
 
@@ -71,8 +71,8 @@ FIS <- function(layers){
   # STEP 1. Merge the b/bmsy data with catch data
   ####
   data_fis <- c %>%
-    left_join(b, by=c('rgn_id', 'stock_id', 'year')) %>%
-    select(rgn_id, stock_id, year, taxon_key, catch, bbmsy, score)
+    left_join(b, by=c('region_id', 'stock_id', 'year')) %>%
+    select(region_id, stock_id, year, taxon_key, catch, bbmsy, score)
 
 
   ###
@@ -83,7 +83,7 @@ FIS <- function(layers){
 
   ## this takes the median score within each region
   data_fis_gf <- data_fis %>%
-    group_by(rgn_id, year) %>%
+    group_by(region_id, year) %>%
     mutate(Median_score = quantile(score, probs=c(0.5), na.rm=TRUE)) %>%
     ungroup()
 
@@ -114,12 +114,12 @@ FIS <- function(layers){
 
   gap_fill_data <- data_fis_gf %>%
     mutate(gap_fill = ifelse(is.na(penalty), "none", "median")) %>%
-    select(rgn_id, stock_id, taxon_key, year, catch, score, gap_fill) %>%
+    select(region_id, stock_id, taxon_key, year, catch, score, gap_fill) %>%
     filter(year == data_year)
   write.csv(gap_fill_data, 'temp/FIS_summary_gf.csv', row.names=FALSE)
 
   status_data <- data_fis_gf %>%
-    select(rgn_id, stock_id, year, catch, score)
+    select(region_id, stock_id, year, catch, score)
 
 
   ###
@@ -131,13 +131,13 @@ FIS <- function(layers){
   # sum of mean catch of all species in region/year
 
   status_data <- status_data %>%
-    group_by(year, rgn_id) %>%
+    group_by(year, region_id) %>%
     mutate(SumCatch = sum(catch)) %>%
     ungroup() %>%
     mutate(wprop = catch/SumCatch)
 
   status_data <- status_data %>%
-    group_by(rgn_id, year) %>%
+    group_by(region_id, year) %>%
     summarize(status = prod(score^wprop)) %>%
     ungroup()
 
@@ -150,7 +150,7 @@ FIS <- function(layers){
     mutate(
       score     = round(status*100, 1),
       dimension = 'status') %>%
-    select(rgn_id, score, dimension)
+    select(region_id, score, dimension)
 
 
   # calculate trend
@@ -160,10 +160,10 @@ FIS <- function(layers){
 
   trend <- status_data %>%
     filter(year %in% trend_years) %>%
-    group_by(rgn_id) %>%
+    group_by(region_id) %>%
     do(mdl = lm(status ~ year, data=.),
        adjust_trend = .$status[.$year == first_trend_year]) %>%
-    summarize(rgn_id,
+    summarize(region_id,
               score = round(coef(mdl)['year']/adjust_trend * 5, 4),
               dimension = 'trend') %>%
     ungroup() %>%
@@ -172,7 +172,6 @@ FIS <- function(layers){
 
   # assemble dimensions
   scores <- rbind(status, trend) %>%
-    dplyr::rename(region_id = rgn_id) %>%
     mutate(goal='FIS') %>%
     data.frame()
 
@@ -183,13 +182,13 @@ MAR <- function(layers){
 
   ## read in layers
   harvest_tonnes <- layers$data$mar_harvest_tonnes %>%
-    select(rgn_id, taxa_code, year, tonnes)
+    select(region_id = rgn_id, taxa_code, year, tonnes)
 
   sustainability_score <- layers$data$mar_sustainability_score %>%
-    select(rgn_id, taxa_code, sust_coeff)
+    select(region_id = rgn_id, taxa_code, sust_coeff)
 
   popn_inland25mi <- layers$data$mar_coastalpopn_inland25mi %>%
-    select(rgn_id, year, popsum) %>%
+    select(region_id = rgn_id, year, popsum) %>%
     mutate(popsum = popsum + 1)  # so 0 values do not cause errors when logged
 
   ## set data year for assessment
@@ -197,7 +196,7 @@ MAR <- function(layers){
 
   ## combine layers
   rky <-  harvest_tonnes %>%
-    left_join(sustainability_score, by = c('rgn_id', 'taxa_code'))
+    left_join(sustainability_score, by = c('region_id', 'taxa_code'))
 
   # fill in gaps with no data
   rky <- spread(rky, year, tonnes)
@@ -207,8 +206,8 @@ MAR <- function(layers){
   # 4-year rolling mean of data
   m <- rky %>%
     mutate(year = as.numeric(as.character(year))) %>%
-    group_by(rgn_id, taxa_code, sust_coeff) %>%
-    arrange(rgn_id, taxa_code, year) %>%
+    group_by(region_id, taxa_code, sust_coeff) %>%
+    arrange(region_id, taxa_code, year) %>%
     mutate(sm_tonnes = zoo::rollapply(tonnes, 4, mean, na.rm=TRUE, partial=TRUE)) %>%
     ungroup()
 
@@ -219,9 +218,9 @@ MAR <- function(layers){
 
   # aggregate all weighted timeseries per region, and divide by coastal human population
   ry = m %>%
-    group_by(rgn_id, year) %>%
+    group_by(region_id, year) %>%
     summarize(sust_tonnes_sum = sum(sust_tonnes, na.rm=TRUE)) %>%  #na.rm = TRUE assumes that NA values are 0
-    left_join(popn_inland25mi, by = c('rgn_id','year')) %>%
+    left_join(popn_inland25mi, by = c('region_id','year')) %>%
     mutate(mar_pop = sust_tonnes_sum / popsum) %>%
     ungroup()
 
@@ -232,12 +231,12 @@ MAR <- function(layers){
 
   ref_95pct <- quantile(ref_95pct_data$mar_pop, 0.95, na.rm=TRUE)
 
-  # identify reference rgn_id
+  # identify reference region_id
   ry_ref = ref_95pct_data %>%
     arrange(mar_pop) %>%
     filter(mar_pop >= ref_95pct)
   message(sprintf('95th percentile for MAR ref pt is: %s\n', ref_95pct))
-  message(sprintf('95th percentile rgn_id for MAR ref pt is: %s\n', ry_ref$rgn_id[1]))
+  message(sprintf('95th percentile region_id for MAR ref pt is: %s\n', ry_ref$region_id[1]))
 
   ry = ry %>%
     mutate(status = ifelse(mar_pop / ref_95pct > 1,
@@ -245,7 +244,7 @@ MAR <- function(layers){
                            mar_pop / ref_95pct))
   status <- ry %>%
     filter(year == data_year) %>%
-    select(rgn_id, status) %>%
+    select(region_id, status) %>%
     mutate(status = round(status*100, 2))
 
   trend_years <- (data_year-4):(data_year)
@@ -253,25 +252,24 @@ MAR <- function(layers){
 
   # get MAR trend
   trend = ry %>%
-    group_by(rgn_id) %>%
+    group_by(region_id) %>%
     filter(year %in% trend_years) %>%
     filter(!is.na(popsum)) %>%
     do(mdl = lm(status ~ year, data=.),
        adjust_trend = .$status[.$year == first_trend_year]) %>%
-    summarize(rgn_id, trend = ifelse(coef(mdl)['year']==0, 0, coef(mdl)['year']/adjust_trend * 5)) %>%
+    summarize(region_id, trend = ifelse(coef(mdl)['year']==0, 0, coef(mdl)['year']/adjust_trend * 5)) %>%
     ungroup()
 
   trend <- trend %>%
     mutate(trend = ifelse(trend>1, 1, trend)) %>%
     mutate(trend = ifelse(trend<(-1), (-1), trend)) %>%
     mutate(trend = round(trend, 4)) %>%
-    select(region_id = rgn_id, score = trend) %>%
+    select(region_id = region_id, score = trend) %>%
     mutate(dimension = "trend")
 
   # return scores
   scores = status %>%
-    select(region_id = rgn_id,
-           score     = status) %>%
+    select(region_id, score = status) %>%
     mutate(dimension='status') %>%
     rbind(trend) %>%
     mutate(goal='MAR')
