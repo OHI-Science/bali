@@ -733,7 +733,7 @@ CS <- function(layers){
   health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_saltmarsh_health')
   trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_saltmarsh_trend')
 
-  # get data together:
+  # get data together. Note: SelectData2() is a function defined at the bottom of this script
   extent <- SelectData2(extent_lyrs) %>%
     filter(!(habitat %in% c("mangrove_inland1km", "mangrove_offshore"))) %>%
     filter(scenario_year == data_year) %>%
@@ -873,7 +873,7 @@ CP <- function(layers){
   health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_saltmarsh_health', 'hab_coral_health', 'hab_seaice_health')
   trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_saltmarsh_trend', 'hab_coral_trend', 'hab_seaice_trend')
 
-  # get data together:
+  # get data together. Note: SelectData2() is a function defined at the bottom of this script
   extent <- SelectData2(extent_lyrs) %>%
     filter(!(habitat %in% "seaice_edge")) %>%
     filter(scenario_year == data_year) %>%
@@ -1305,16 +1305,16 @@ LIV_ECO <- function(layers, subgoal){
 LE = function(scores, layers){
 
   # calculate LE scores
-  scores.LE = scores %>%
+  scores_LE = scores %>%
     dplyr::filter(goal %in% c('LIV','ECO') & dimension %in% c('status','trend','score','future')) %>%
     tidyr::spread(key = goal, value = score) %>%
-    dplyr::mutate(score = rowMeans(cbind(ECO, LIV), na.rm=T)) %>%
+    dplyr::mutate(score = rowMeans(cbind(ECO, LIV), na.rm=TRUE)) %>%
     dplyr::select(region_id, dimension, score) %>%
     dplyr::mutate(goal  = 'LE')
 
   # rbind to all scores
   scores = scores %>%
-    rbind(scores.LE)
+    rbind(scores_LE)
 
   # return scores
   return(scores)
@@ -1323,13 +1323,14 @@ LE = function(scores, layers){
 
 ICO = function(layers){
 
-  status_year <- 2016
+  ## read in layers
+  ico <- layers$data$ico_spp_iucn_status %>%
+    select(region_id = rgn_id, sciname, iucn_cat = category, year) %>%
+    mutate(sciname  = as.character(sciname),
+           iucn_cat = as.character(iucn_cat))
 
-  layers_data = SelectLayersData(layers, layers=c('ico_spp_iucn_status'))
-
-  rk <- layers_data %>%
-    select(region_id = id_num, sciname = category, iucn_cat=val_chr, year, layer) %>%
-    mutate(iucn_cat = as.character(iucn_cat))
+  ## set data year for assessment
+  data_year <- max(ico$year)
 
   # lookup for weights status
   #  LC <- "LOWER RISK/LEAST CONCERN (LR/LC)"
@@ -1342,14 +1343,16 @@ ICO = function(layers){
   #  DD <- "INSUFFICIENTLY KNOWN (K)"
   #  DD <- "INDETERMINATE (I)"
   #  DD <- "STATUS INADEQUATELY KNOWN-SURVEY REQUIRED OR DATA SOUGHT"
-  w.risk_category = data.frame(iucn_cat = c('LC', 'NT', 'CD', 'VU', 'EN', 'CR', 'EX', 'DD'),
-                               risk_score = c(0,  0.2,  0.3,  0.4,  0.6,  0.8,  1, NA)) %>%
+
+  w.risk_category <- data.frame(
+    iucn_cat = c('LC', 'NT', 'CD', 'VU', 'EN', 'CR', 'EX', 'DD'),
+    risk_score = c(0,  0.2,  0.3,  0.4,  0.6,  0.8,  1, NA)) %>%
     mutate(status_score = 1-risk_score) %>%
     mutate(iucn_cat = as.character(iucn_cat))
 
   ####### status
   # STEP 1: take mean of subpopulation scores
-  r.status_spp <- rk %>%
+  r.status_spp <- ico %>%
     left_join(w.risk_category, by = 'iucn_cat') %>%
     group_by(region_id, sciname, year) %>%
     summarize(spp_mean = mean(status_score, na.rm=TRUE)) %>%
@@ -1362,7 +1365,7 @@ ICO = function(layers){
     ungroup()
 
   ####### trend
-  trend_years <- c(status_year:(status_year - 9)) # trend based on 10 years of data, due to infrequency of IUCN assessments
+  trend_years <- c(data_year:(data_year - 9)) # trend based on 10 years of data, due to infrequency of IUCN assessments
   adj_trend_year <- min(trend_years)
 
 
@@ -1382,7 +1385,7 @@ ICO = function(layers){
 
   ####### status
   r.status <- r.status %>%
-    filter(year == status_year) %>%
+    filter(year == data_year) %>%
     mutate(score = score * 100) %>%
     mutate(dimension = "status") %>%
     select(region_id, score, dimension)
@@ -1405,41 +1408,50 @@ ICO = function(layers){
 }
 
 
-LSP = function(layers, ref_pct_cmpa=30, ref_pct_cp=30){
+LSP <- function(layers){
 
-  status_year <- 2015
+  ## read in layers
+  ## total offshore/inland areas
+  inland <- layers$data$rgn_area_inland1km %>%
+    select(region_id = rgn_id, area_inland1km = area)
 
-  trend_years = (status_year-4):status_year
+  offshore <- layers$data$rgn_area_offshore3nm %>%
+    select(region_id = rgn_id, area_offshore3nm = area)
 
-  # select data ----
-  r = SelectLayersData(layers, layers=c('rgn_area_inland1km', 'rgn_area_offshore3nm'))  #total offshore/inland areas
-  ry = SelectLayersData(layers, layers=c('lsp_prot_area_offshore3nm', 'lsp_prot_area_inland1km')) #total protected areas
+  ## total protected areas
+  inland_prot <- layers$data$lsp_prot_area_inland1km %>%
+                select(region_id = rgn_id, cmpa = a_prot_1km, year)
+  offshore_prot <- layers$data$lsp_prot_area_offshore3nm %>%
+                select(region_id = rgn_id, cp = a_prot_3nm, year)
 
-  r <- r %>%
-    select(region_id = id_num, val_num, layer) %>%
-    spread(layer, val_num) %>%
-    select(region_id, area_inland1km = rgn_area_inland1km,
-           area_offshore3nm = rgn_area_offshore3nm)
 
-  ry <- ry %>%
-    select(region_id = id_num, year, val_num, layer) %>%
-    spread(layer, val_num) %>%
-    select(region_id, year, cmpa = lsp_prot_area_offshore3nm,
-           cp = lsp_prot_area_inland1km)
+  ## set data year for assessment
+  data_year <- max(inland_prot$year)
+  trend_years = (data_year-4):data_year
+
+
+  ## set reference points
+  ref_pct_cmpa <- 30
+  ref_pct_cp   <- 30
+
+  ## combine data
+  r <- left_join(inland, offshore, by = c('region_id'))
+
+  ry <- left_join(inland_prot, offshore_prot, by = c('region_id', 'year')) %>%
+    select(region_id, year, cmpa, cp)
 
   # fill in time series for all regions
-
   r.yrs <- expand.grid(region_id = unique(ry$region_id),
                        year = unique(ry$year)) %>%
     left_join(ry, by=c('region_id', 'year')) %>%
     arrange(region_id, year) %>%
     mutate(cp= ifelse(is.na(cp), 0, cp),
            cmpa = ifelse(is.na(cmpa), 0, cmpa)) %>%
-    mutate(pa     = cp + cmpa)
+    mutate(pa  = cp + cmpa)
 
   # get percent of total area that is protected for inland1km (cp) and offshore3nm (cmpa) per year
   # and calculate status score
-  r.yrs = r.yrs %>%
+  r.yrs <- r.yrs %>%
     full_join(r, by="region_id") %>%
     mutate(pct_cp    = pmin(cp   / area_inland1km   * 100, 100),
            pct_cmpa  = pmin(cmpa / area_offshore3nm * 100, 100),
@@ -1448,7 +1460,7 @@ LSP = function(layers, ref_pct_cmpa=30, ref_pct_cp=30){
 
   # extract status based on specified year
   r.status = r.yrs %>%
-    filter(year==status_year) %>%
+    filter(year==data_year) %>%
     select(region_id, status=prop_protected) %>%
     mutate(status=status*100) %>%
     select(region_id, score = status) %>%
@@ -1485,7 +1497,7 @@ LSP = function(layers, ref_pct_cmpa=30, ref_pct_cp=30){
   return(scores[,c('region_id','goal','dimension','score')])
 }
 
-SP = function(scores){
+SP <- function(scores){
 
   ## to calculate the four SP dimesions, average those dimensions for ICO and LSP
   s <- scores %>%
@@ -1504,14 +1516,23 @@ SP = function(scores){
 }
 
 
-CW = function(layers){
+CW <- function(layers){
 
-  # layers
-  lyrs <- c('po_pathogens', 'po_nutrients_3nm', 'po_chemicals_3nm', 'po_trash',
-            'cw_chemical_trend', 'cw_nutrient_trend', 'cw_trash_trend', 'cw_pathogen_trend')
+  ## read in layers
+  pressure_lyrs <- c('po_pathogens', 'po_nutrients_3nm', 'po_chemicals_3nm', 'po_trash')
+  trend_layers  <- c('cw_chemical_trend', 'cw_nutrient_trend', 'cw_trash_trend', 'cw_pathogen_trend')
 
-  d <-  SelectLayersData(layers, layers=lyrs)  %>%
-    select(region_id = id_num, layer, value = val_num)
+  d_pressures <- rbind(layers$data$po_pathogens,
+                       layers$data$po_nutrients_3nm,
+                       layers$data$po_chemicals_3nm,
+                       layers$data$po_trash) %>%
+    select(region_id = rgn_id, year, pressure_score, layer)
+
+  d_trends <- rbind(layers$data$cw_chemical_trend,
+                   layers$data$cw_nutrient_trend,
+                   layers$data$cw_trash_trend,
+                   layers$data$cw_pathogen_trend) %>%
+    select(region_id = rgn_id, year, trend, layer)
 
   ### function to calculate geometric mean:
   geometric.mean2 <- function (x, na.rm = TRUE) {
@@ -1523,19 +1544,17 @@ CW = function(layers){
     }
   }
 
-
-  d_pressures <- d %>%
-    filter(layer %in% grep('po_', lyrs, value=TRUE))  %>%
-    mutate(pressure = 1 - value) %>%  # invert pressures
+  ## calculations
+  d_pressures <- d_pressures %>%
+    mutate(pressure = 1 - pressure_score) %>%  # invert pressures
     group_by(region_id) %>%
     summarize(score = geometric.mean2(pressure, na.rm=TRUE)) %>% # take geometric mean
     mutate(score = score * 100) %>%
     mutate(dimension = "status") %>%
     ungroup()
 
-  d_trends <- d %>%
-    filter(layer %in% grep('_trend', lyrs, value=TRUE)) %>%
-    mutate(trend = -1 * value)  %>%  # invert trends
+  d_trends <- d_trends %>%
+    mutate(trend = -1 * trend)  %>%  # invert trends
     group_by(region_id) %>%
     summarize(score = mean(trend, na.rm = TRUE)) %>%
     mutate(dimension = "trend") %>%
@@ -1548,44 +1567,38 @@ CW = function(layers){
     select(region_id, goal, dimension, score) %>%
     data.frame()
 
-  ## reference points
-  rp <- read.csv('temp/referencePoints.csv', stringsAsFactors=FALSE) %>%
-    rbind(data.frame(goal = "CW", method = "spatial: pressures scaled from 0-1 at raster level",
-                     reference_point = NA))
-  write.csv(rp, 'temp/referencePoints.csv', row.names=FALSE)
-
   return(scores)
 }
 
 
 HAB = function(layers){
 
-  scen_year <- 2014 ## TODO Mel this one too layers$data$scenario_year
+  ## set data year for assessment
+  data_year <- 2014
 
+  ## read in layers
+  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_saltmarsh_extent',
+                   'hab_coral_extent', 'hab_seaice_extent', 'hab_softbottom_extent')
+  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_saltmarsh_health',
+                   'hab_coral_health', 'hab_seaice_health', 'hab_softbottom_health')
+  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_saltmarsh_trend',
+                  'hab_coral_trend', 'hab_seaice_trend', 'hab_softbottom_trend')
 
-  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_saltmarsh_extent', 'hab_coral_extent', 'hab_seaice_extent',
-                   'hab_softbottom_extent')
-  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_saltmarsh_health', 'hab_coral_health', 'hab_seaice_health',
-                   'hab_softbottom_health')
-  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_saltmarsh_trend', 'hab_coral_trend', 'hab_seaice_trend',
-                  'hab_softbottom_trend')
-
-  # get data together:
+  # get data together. Note: SelectData2() is a function defined at the bottom of this script
   extent <- SelectData2(extent_lyrs) %>%
-    filter(scenario_year == scen_year) %>%
+    filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, extent=km2) %>%
     mutate(habitat = as.character(habitat))
 
   health <- SelectData2(health_lyrs) %>%
-    filter(scenario_year == scen_year) %>%
+    filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, health) %>%
     mutate(habitat = as.character(habitat))
 
   trend <- SelectData2(trend_lyrs) %>%
-    filter(scenario_year == scen_year) %>%
+    filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, trend) %>%
     mutate(habitat = as.character(habitat))
-
 
   # join and limit to HAB habitats
   d <- health %>%
@@ -1652,22 +1665,19 @@ HAB = function(layers){
 }
 
 SPP = function(layers){
-  scores <-   SelectLayersData(layers, layers=c('spp_status'='status','spp_trend'='trend'), narrow = TRUE) %>%
-    select(region_id = id_num, dimension = layer, score = val_num) %>%
+
+  ## read in layers and format
+  scores <- rbind(layers$data$spp_status, layers$data$spp_trend) %>%
     mutate(goal = 'SPP') %>%
-    mutate(score = ifelse(dimension == 'status', score*100, score))
-
-  ## reference points
-  rp <- read.csv('temp/referencePoints.csv', stringsAsFactors=FALSE) %>%
-    rbind(data.frame(goal = "SPP", method = "Average of IUCN risk categories, scaled to historic extinction",
-                     reference_point = NA))
-  write.csv(rp, 'temp/referencePoints.csv', row.names=FALSE)
-
+    mutate(dimension = ifelse(layer=="spp_status", "status", "trend")) %>%
+    mutate(score = ifelse(dimension == 'status', score*100, score)) %>%
+    select(region_id=rgn_id, goal, dimension, score)
 
   return(scores)
 }
 
 BD = function(scores){
+
   d <- scores %>%
     filter(goal %in% c('HAB', 'SPP')) %>%
     filter(!(dimension %in% c('pressures', 'resilience'))) %>%
@@ -1748,7 +1758,8 @@ get_data_year <- function(layer_nm, layers=layers) { #layer_nm="le_wage_cur_base
 
 # useful function for compiling multiple data layers
 # only works when the variable names are the same across datasets
-# (e.g., coral, seagrass, and mangroves)
+# (e.g., coral, seagrass, and mangroves).
+# it relies on get_data_year(), a function defined immediately above.
 SelectData2 <- function(layer_names){
   data <- data.frame()
   for(e in layer_names){ # e="le_jobs_cur_base_value"
