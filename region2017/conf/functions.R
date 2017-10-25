@@ -116,7 +116,7 @@ FIS <- function(layers){
     mutate(gap_fill = ifelse(is.na(penalty), "none", "median")) %>%
     select(region_id, stock_id, taxon_key, year, catch, score, gap_fill) %>%
     filter(year == data_year)
-  write.csv(gap_fill_data, 'temp/FIS_summary_gf.csv', row.names=FALSE)
+
 
   status_data <- data_fis_gf %>%
     select(region_id, stock_id, year, catch, score)
@@ -377,12 +377,6 @@ AO = function(layers){
     mutate(trend = ifelse(trend<(-1), (-1), trend)) %>%
     mutate(trend = round(trend, 4))
 
-  ## reference points
-  rp <- read.csv('temp/referencePoints.csv', stringsAsFactors=FALSE) %>%
-    rbind(data.frame(goal = "AO", method = "??",
-                     reference_point = NA))
-  write.csv(rp, 'temp/referencePoints.csv', row.names=FALSE)
-
 
   # return scores
   scores = r.status %>%
@@ -541,7 +535,7 @@ NP <- function(scores, layers){
     gap_fill <- np_exp %>%
       mutate(gap_fill = ifelse(is.na(exposure), "prod_average", 0)) %>%
       select(region_id, product, year, gap_fill)
-    ##  write.csv(gap_fill, 'eez/temp/NP_exposure_gapfill.csv', row.names=FALSE)
+
 
     ### add exposure for countries with (habitat extent == NA)
     np_exp <- np_exp %>%
@@ -1390,11 +1384,6 @@ ICO = function(layers){
     mutate(dimension = "status") %>%
     select(region_id, score, dimension)
 
-  ## reference points
-  rp <- read.csv('temp/referencePoints.csv', stringsAsFactors=FALSE) %>%
-    rbind(data.frame(goal = "ICO", method = "scaled IUCN risk categories",
-                     reference_point = NA))
-  write.csv(rp, 'temp/referencePoints.csv', row.names=FALSE)
 
 
   # return scores
@@ -1483,12 +1472,6 @@ LSP <- function(layers){
     mutate(dimension = "trend")
 
 
-  ## reference points
-  rp <- read.csv('temp/referencePoints.csv', stringsAsFactors=FALSE) %>%
-    rbind(data.frame(goal = "LSP", method = paste0(ref_pct_cmpa, "% marine protected area; ",
-                                                   ref_pct_cp, "% coastal protected area"),
-                     reference_point = "varies by area of region's eez and 1 km inland"))
-  write.csv(rp, 'temp/referencePoints.csv', row.names=FALSE)
 
 
   # return scores
