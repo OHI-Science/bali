@@ -1,0 +1,32 @@
+## prep mangrove data
+
+## load libraries
+library(tidyverse) # install.package('tidyverse')
+
+## read in data; read_csv2 uses `;` as separators
+d <- readr::read_delim(file = 'prep/CS/cs_hab_mangrove.csv',
+                       delim = ";")
+
+## look at the data
+head(d)
+unique(d$rgn_id)
+
+## arrange data by rgn_id and years
+d <- d %>%
+  arrange(rgn_id, years)
+
+## missing regions should be assigned to NA.
+## to understand `complete()`, see: http://ohi-science.org/data-science-training/tidyr.html#complete
+d <- d %>%
+  complete(rgn_id = full_seq(x = c(rgn_id, 8), period = 1),
+           years,
+           fill = list(area_ha = NA))
+
+## look at the data now
+head(d)
+unique(d$rgn_id)
+summary(d)
+View(d)
+
+## save data layer
+write_csv(d, "prep/CS/cs_hab_mangrove_complete.csv")
