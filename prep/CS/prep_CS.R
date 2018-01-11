@@ -30,3 +30,4 @@ View(d)
 
 ## save data layer
 write_csv(d, "prep/CS/cs_hab_mangrove_complete.csv")
+write_csv(d, "region2017/layers/cs_hab_mangrove_complete.csv")
