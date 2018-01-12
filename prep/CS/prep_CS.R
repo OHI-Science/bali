@@ -34,6 +34,11 @@ d <- d %>%
   mutate(habitat = "mangrove") %>%
   select(rgn_id, habitat, year, area_ha)
 
+## convert hectares to square kilometers
+d <- d %>%
+  mutate(km2 = area_ha * 0.01) %>%
+  select(rgn_id, habitat, year, km2)
+
 ## save data layer
 write_csv(d, "prep/CS/cs_hab_mangrove_complete.csv")
 write_csv(d, "region2017/layers/cs_hab_mangrove_complete.csv")
