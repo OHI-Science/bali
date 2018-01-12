@@ -11,15 +11,16 @@ d <- readr::read_delim(file = 'prep/CS/cs_hab_mangrove.csv',
 head(d)
 unique(d$rgn_id)
 
-## arrange data by rgn_id and years
+## arrange data by rgn_id and year
 d <- d %>%
-  arrange(rgn_id, years)
+  rename(year = years) %>%
+  arrange(rgn_id, year)
 
 ## missing regions should be assigned to NA.
 ## to understand `complete()`, see: http://ohi-science.org/data-science-training/tidyr.html#complete
 d <- d %>%
   complete(rgn_id = full_seq(x = c(rgn_id, 8), period = 1),
-           years,
+           year,
            fill = list(area_ha = NA))
 
 ## look at the data now
