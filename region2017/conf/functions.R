@@ -720,7 +720,7 @@ NP <- function(scores, layers){
 CS <- function(layers){
 
   ## set data year for assessment
-  data_year <- 2014
+  data_year <- 2015
 
   ## read in layers
   extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_saltmarsh_extent')
