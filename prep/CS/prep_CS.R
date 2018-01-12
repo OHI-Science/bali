@@ -29,6 +29,11 @@ unique(d$rgn_id)
 summary(d)
 View(d)
 
+## add a habitat column to match the global `hab_mangrove_extent` layer
+d <- d %>%
+  mutate(habitat = "mangrove") %>%
+  select(rgn_id, habitat, year, area_ha)
+
 ## save data layer
 write_csv(d, "prep/CS/cs_hab_mangrove_complete.csv")
 write_csv(d, "region2017/layers/cs_hab_mangrove_complete.csv")
