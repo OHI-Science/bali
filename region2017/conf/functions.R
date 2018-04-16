@@ -723,12 +723,13 @@ CS <- function(layers){
   data_year <- 2015
 
   ## read in layers
-  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_saltmarsh_extent')
-  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_saltmarsh_health')
-  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_saltmarsh_trend')
+  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent')
+  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health')
+  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend')
 
   # get data together. Note: SelectData2() is a function defined at the bottom of this script
   extent <- SelectData2(extent_lyrs) %>%
+  
     filter(!(habitat %in% c("mangrove_inland1km", "mangrove_offshore"))) %>%
     filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, extent=km2) %>%
@@ -863,9 +864,9 @@ CP <- function(layers){
   data_year <- 2015
 
   ## read in layers
-  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_saltmarsh_extent', 'hab_coral_extent', 'hab_seaice_extent')
-  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_saltmarsh_health', 'hab_coral_health', 'hab_seaice_health')
-  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_saltmarsh_trend', 'hab_coral_trend', 'hab_seaice_trend')
+  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_coral_extent')
+  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_coral_health')
+  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_coral_trend')
 
   # get data together. Note: SelectData2() is a function defined at the bottom of this script
   extent <- SelectData2(extent_lyrs) %>%
