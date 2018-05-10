@@ -719,33 +719,42 @@ NP <- function(scores, layers){
 
 CS <- function(layers){
 
-  ## set data year for assessment
-  data_year <- 2015
-
+  
   ## read in layers
-  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent')
-  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health')
-  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend')
+  extent_lyrs <- c('cs_mangrove_extent', 'cs_seagrass_extent')
+  health_lyrs <- c('cs_mangrove_health')
+  trend_lyrs <- c('cs_mangrove_trend', 'cs_seagrass_trend')
+ 
+
 
   # get data together. Note: SelectData2() is a function defined at the bottom of this script
   extent <- SelectData2(extent_lyrs) %>%
   
-    filter(!(habitat %in% c("mangrove_inland1km", "mangrove_offshore"))) %>%
-    filter(scenario_year == data_year) %>%
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, extent=km2) %>%
     mutate(habitat = as.character(habitat))
+    
+    print(extent)
+    
 
   health <- SelectData2(health_lyrs) %>%
-    filter(!(habitat %in% c("mangrove_inland1km", "mangrove_offshore"))) %>%
-    filter(scenario_year == data_year) %>%
+    
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, health) %>%
     mutate(habitat = as.character(habitat))
-
+    
+    print(health)
+   
   trend <- SelectData2(trend_lyrs)%>%
-    filter(!(habitat %in% c("mangrove_inland1km", "mangrove_offshore"))) %>%
-    filter(scenario_year == data_year) %>%
+  
+    
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, trend) %>%
     mutate(habitat = as.character(habitat))
+    
+	print(trend)
+	
+	
 
   ## join layer data
   d <-  extent %>%
@@ -762,6 +771,10 @@ CS <- function(layers){
     mutate(
       rank = habitat.rank[habitat],
       extent = ifelse(extent==0, NA, extent))
+      
+      print(d)
+      
+     
 
   # status
   status <- d %>%
@@ -771,6 +784,8 @@ CS <- function(layers){
       score = pmin(1, sum(rank * health * extent, na.rm=TRUE) / (sum(extent * rank, na.rm=TRUE)) ) * 100,
       dimension = 'status') %>%
     ungroup()
+    
+    print(status)
 
   # trend
 
@@ -781,11 +796,18 @@ CS <- function(layers){
       score = sum(rank * trend * extent, na.rm=TRUE) / (sum(extent*rank, na.rm=TRUE)),
       dimension = 'trend') %>%
     ungroup()
+    
+    print(trend)
+
+	
+	
 
 
   scores_CS <- rbind(status, trend)  %>%
     mutate(goal = 'CS') %>%
     select(goal, dimension, region_id, score)
+    
+  print(scores_CS)
 
   ## reference points
   # write_ref_pts(goal = "CS",
@@ -805,7 +827,8 @@ CS <- function(layers){
 
   # return scores
   return(scores_CS)
-}
+  
+  }
 
 
 
@@ -860,50 +883,38 @@ CP <- function(layers){
 
   ## This is the original code from ohi-global:
 
-  ## set data year for assessment
-  data_year <- 2015
+  
 
   ## read in layers
-  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_coral_extent')
-  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_coral_health')
-  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_coral_trend')
+  extent_lyrs <- c('cp_mangrove_extent', 'cp_seagrass_extent', 'cp_coral_extent')
+  health_lyrs <- c('cp_mangrove_health')
+  trend_lyrs <- c('cp_mangrove_trend', 'cp_seagrass_trend', 'cp_coral_trend')
 
   # get data together. Note: SelectData2() is a function defined at the bottom of this script
   extent <- SelectData2(extent_lyrs) %>%
-    filter(!(habitat %in% "seaice_edge")) %>%
-    filter(scenario_year == data_year) %>%
+   
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, extent=km2) %>%
     mutate(habitat = as.character(habitat))
 
   health <- SelectData2(health_lyrs) %>%
-    filter(!(habitat %in% "seaice_edge")) %>%
-    filter(scenario_year == data_year) %>%
+    
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, health) %>%
     mutate(habitat = as.character(habitat))
 
   trend <- SelectData2(trend_lyrs) %>%
-    filter(!(habitat %in% "seaice_edge")) %>%
-    filter(scenario_year == data_year) %>%
+    
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, trend) %>%
     mutate(habitat = as.character(habitat))
 
-  ## sum mangrove_offshore + mangrove_inland1km = mangrove to match with extent and trend
-  mangrove_extent <- extent %>%
-    filter(habitat %in% c('mangrove_inland1km','mangrove_offshore'))
-
-  if (nrow(mangrove_extent) > 0){
-    mangrove_extent <- mangrove_extent %>%
-      group_by(region_id) %>%
-      summarize(extent = sum(extent, na.rm = TRUE)) %>%
-      mutate(habitat='mangrove') %>%
-      ungroup()
-  }
-
-  extent <- extent %>%
-    filter(!habitat %in% c('mangrove','mangrove_inland1km','mangrove_offshore')) %>%  #do not use all mangrove
-    rbind(mangrove_extent)  #just the inland 1km and offshore
-
-  ## join layer data
+	print(extent)
+	print(health)
+	print(trend)
+	
+	
+	## join layer data
   d <-  extent %>%
     full_join(health, by=c("region_id", "habitat")) %>%
     full_join(trend, by=c("region_id", "habitat"))
@@ -914,16 +925,17 @@ CP <- function(layers){
                     'saltmarsh'        = 3,
                     'seagrass'         = 1,
                     'seaice_shoreline' = 4)
-
-  ## limit to CP habitats and add rank
+                    
+   ## limit to CP habitats and add rank
   d <- d %>%
     filter(habitat %in% names(habitat.rank)) %>%
     mutate(
       rank = habitat.rank[habitat],
       extent = ifelse(extent==0, NA, extent))
-
-
-  # status
+      
+   print(d)
+   
+   # status
   scores_CP <- d %>%
     filter(!is.na(rank) & !is.na(health) & !is.na(extent)) %>%
     group_by(region_id) %>%
@@ -959,9 +971,11 @@ CP <- function(layers){
     mutate(
       goal = 'CP') %>%
     select(region_id, goal, dimension, score)
-
-
-  ## create weights file for pressures/resilience calculations
+    
+    print(scores_CP)
+    
+    
+   ## create weights file for pressures/resilience calculations
 
   weights <- extent %>%
     filter(extent > 0) %>%
@@ -974,8 +988,8 @@ CP <- function(layers){
 
   # return scores
   return(scores_CP)
-
-
+    
+    
 }
 
 TR <- function(layers) {
@@ -1558,29 +1572,28 @@ CW <- function(layers){
 HAB = function(layers){
 
   ## set data year for assessment
-  data_year <- 2014
+  #data_year <- 2014
 
   ## read in layers
-  extent_lyrs <- c('hab_mangrove_extent', 'hab_seagrass_extent', 'hab_saltmarsh_extent',
-                   'hab_coral_extent', 'hab_seaice_extent', 'hab_softbottom_extent')
-  health_lyrs <- c('hab_mangrove_health', 'hab_seagrass_health', 'hab_saltmarsh_health',
-                   'hab_coral_health', 'hab_seaice_health', 'hab_softbottom_health')
-  trend_lyrs <- c('hab_mangrove_trend', 'hab_seagrass_trend', 'hab_saltmarsh_trend',
-                  'hab_coral_trend', 'hab_seaice_trend', 'hab_softbottom_trend')
+  extent_lyrs <- c("hab_coral_extent", "hab_mangrove_extent", "hab_seagrass_extent")
+  health_lyrs <- c("hab_mangrove_health")
+  trend_lyrs <- c("hab_coral_trend", "hab_mangrove_trend", "hab_seagrass_trend")
 
   # get data together. Note: SelectData2() is a function defined at the bottom of this script
   extent <- SelectData2(extent_lyrs) %>%
-    filter(scenario_year == data_year) %>%
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, extent=km2) %>%
     mutate(habitat = as.character(habitat))
+    
+  print(extent)
 
   health <- SelectData2(health_lyrs) %>%
-    filter(scenario_year == data_year) %>%
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, health) %>%
     mutate(habitat = as.character(habitat))
 
   trend <- SelectData2(trend_lyrs) %>%
-    filter(scenario_year == data_year) %>%
+    #filter(scenario_year == data_year) %>%
     select(region_id = rgn_id, habitat, trend) %>%
     mutate(habitat = as.character(habitat))
 
@@ -1588,9 +1601,13 @@ HAB = function(layers){
   d <- health %>%
     full_join(trend, by = c('region_id', 'habitat')) %>%
     full_join(extent, by = c('region_id', 'habitat')) %>%
-    filter(habitat %in% c('coral','mangrove','saltmarsh','seaice_edge','seagrass','soft_bottom')) %>%
+    #filter(habitat %in% c('coral','mangrove','saltmarsh','seaice_edge','seagrass','soft_bottom')) %>%
     mutate(w  = ifelse(!is.na(extent) & extent > 0, 1, NA)) %>%
     filter(!is.na(w))
+
+	print(d)
+	
+	
 
   if(sum(d$w %in% 1 & is.na(d$trend)) > 0){
     warning("Some regions/habitats have extent data, but no trend data.  Consider estimating these values.")
@@ -1621,6 +1638,10 @@ HAB = function(layers){
   scores_HAB <- rbind(status, trend) %>%
     mutate(goal = "HAB") %>%
     select(region_id, goal, dimension, score)
+    
+  print(scores_HAB)
+  
+  
 
   # ## reference points
   # write_ref_pts(goal = "HAB",
