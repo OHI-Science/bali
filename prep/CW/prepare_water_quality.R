@@ -53,9 +53,6 @@ for (i in 3:ncol(dat)){
 	#prefix filename of do will be cw, while the others will be po (pollution-pressure)
 	###################################################################################
 	
-	if (names(dat[i]) == "do"){
-		
-		
 		names(dat1) <- c("rgn_id", "year", "mg/l")
 		
 		# save data layer
@@ -65,79 +62,26 @@ for (i in 3:ncol(dat)){
 		
 	}else{
 		
-	if (names(dat[i]) == "turbidity"){
+			
+		#normalized pressure score between 0-1
+		#using equation: zi = xi - min(x)/(max(x) - min (x)) 
+		####################################################
 		
-		#unit of turbidity is TBU
-		#########################
-		names(dat1) <- c("rgn_id", "year", "tbu")
-		
-		# save data layer
-		write_csv(dat1, paste(directory, "prep/", toupper(goal), "/", "po", "_", names(dat[i]), "_", region, year, ".csv", sep = ""))
-		write_csv(dat1, paste(directory, "region2017/layers/", "po", "_", names(dat[i]), "_", region, year, ".csv", sep = ""))
-		
-	}else{
-	if (names(dat[i]) == "coliform"){
-		
-		#unit of coliform is cell/100ml
-		################################
-		names(dat1) <- c("rgn_id", "year", "cell/100ml")
-		
-		# save data layer
-		write_csv(dat1, paste(directory, "prep/", toupper(goal), "/", "po", "_", names(dat[i]), "_", region, year, ".csv", sep = ""))
-		write_csv(dat1, paste(directory, "region2017/layers/", "po", "_", names(dat[i]), "_", region, year, ".csv", sep = ""))
-		
-		
-		
-	}else{
+		dat1$pressure_score <- ifelse(is.na(dat1[,3]), NA, (dat1[,3] - min(dat1[,3], na.rm = T))/(max(dat1[,3], na.rm = T) - min(dat1[,3], na.rm = T)))
 		
 			
-		names(dat1) <- c("rgn_id", "year", "mg/l")
+		dat1 <- dat1[,c("rgn_id", "year", "pressure_score")]
 		
 		# save data layer
 		write_csv(dat1, paste(directory, "prep/", toupper(goal), "/", "po", "_", names(dat[i]), "_", region, year, ".csv", sep = ""))
 		write_csv(dat1, paste(directory, "region2017/layers/", "po", "_", names(dat[i]), "_", region, year, ".csv", sep = ""))
-	}
+			
 	}
 	}
 	
-	
-}
 
 
 
 
 
-
-
-
-
-stop()
-
-#convert wide data to long format
-#################################
-dat_long <- melt(dat, id = c("years"))
-
-#convert coloum name
-####################
-names(dat_long) <- c("year", "rgn_id", "meter")
-
-#convert rgn_id to number
-#########################
-dat_long$rgn_id <- gsub("X", "", dat_long$rgn_id)
-
-#take number of region
-######################
-dat_long$rgn_id <- as.numeric(substr(dat_long$rgn_id, 1, 1))
-
-#calculate mean of depth in a region when there are more than a value in a year
-###############################################################################
-dat_long <- setNames(aggregate(dat_long$meter ~ dat_long$rgn_id + dat_long$year, FUN = mean), c("rgn_id", "year", "meter"))
-
-#order data based on rgn_id and year
-####################################
-dat_long <- dat_long[order(dat_long$rgn_id, dat_long$year),]
-
-## save data layer
-write_csv(dat_long, paste(directory, "prep/", toupper(goal), "/", goal, "_water_clarity_", region, year, ".csv", sep = ""))
-write_csv(dat_long, paste(directory, "region2017/layers/", goal, "_water_clarity_", region, year, ".csv", sep = ""))
 
