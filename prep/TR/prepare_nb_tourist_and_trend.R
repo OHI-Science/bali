@@ -46,24 +46,29 @@ setwd(dir_scripts)
 	##################
 	write_csv(dat, paste(directory, "prep/", toupper(goal), "/", filename, "_", region, year, ".csv", sep = ""))
 	write_csv(dat, paste(directory, "region2017/layers/", filename, "_", region, year, ".csv", sep = ""))
-
+	
+	
+	#for trend calculation, data are divided with 1000 000
+	#######################################################
+	dat$nb_tourist_divided <- ifelse(is.na(dat$nb_tourist), NA, dat$nb_tourist/1000000)
 
 
 	#calculate trend
 	r.trend <- dat %>%
 				filter(year >= min(year)) %>%
-				filter(!is.na(nb_tourist))%>%
+				filter(!is.na(nb_tourist_divided))%>%
 				group_by(rgn_id) %>%
 				arrange(year) %>%
-				top_n(5, year) %>%
+				top_n(6, year) %>%
 				ungroup()
 			
 				
 	r.trend <- r.trend %>%
 				group_by(rgn_id) %>%
-				do(mdl = lm(nb_tourist~year, data=.))%>%
+				do(mdl = lm(nb_tourist_divided~year, data=.))%>%
 				summarize(rgn_id = rgn_id, trend = coef(mdl)['year']*5) %>%
 				ungroup()
+				
 				
 	
 	#fill missing region with unit = NA
