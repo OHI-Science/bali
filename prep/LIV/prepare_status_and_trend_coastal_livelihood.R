@@ -29,7 +29,7 @@ setwd(dir_scripts)
 	
 	#convert character data to numeric, only for third coloumn (nb_marine_industries)
 	#################################################################################
-	dat[,3] <- sapply(dat[,3],as.numeric)	
+	dat[,3] <- data.frame(sapply(dat[,3],as.numeric))	
 	
 	
 	#calculate trend
@@ -47,7 +47,9 @@ setwd(dir_scripts)
 	#####################
 	dat_all <- merge(dat, r.trend, by.x = c("rgn_id"), all= T)
 	
+	dat_all <- dat_all %>% arrange(rgn_id, year)
 	
+		
 		#save status data
 		#################
 		dat_stat <- dat_all%>%select(rgn_id, year, nb_marine_industries)
