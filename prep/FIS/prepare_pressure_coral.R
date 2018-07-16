@@ -1,6 +1,8 @@
-#################################
-#prepare resilience of coral reef
-#################################
+#################################################
+#prepare pressure FIS due to coral reef condition
+################################################
+
+rm(list = ls(all = T))
 
 library(tidyverse)
 
