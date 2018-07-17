@@ -1,6 +1,9 @@
-##############################
-#prepare resilience of economy
-##############################
+###################################################################
+#prepare resilience of artisanal fishing opportunity
+#The data is annual number of various fishing gears
+#First: calculate diversity index using Shannon's approach
+#Second: Normalize data (0-1) to become resilience score
+###################################################################
 
 rm(list = ls(all = T))
 
@@ -31,7 +34,7 @@ setwd(dir_scripts)
 	#########################################
 	dat <- melt(dat, id = c("region", "year"))
 	
-	#calculate diversity index using Hannon-index approach
+	#calculate diversity index using Shannon-index approach
 	######################################################
 	
 	dat$loop <- paste(dat$region, dat$year, sep = "_")
