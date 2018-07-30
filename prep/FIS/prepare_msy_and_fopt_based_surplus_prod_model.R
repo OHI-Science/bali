@@ -43,14 +43,14 @@ setwd(dir_scripts)
 	
 	#extract catch data
 	###################
-	dat_catch <- dat[dat$variable == "marine_catch",]
+	dat_catch <- dat[dat$variable == "catch",]
 	
 		dat_catch <- dat_catch[,c("rgn_id", "year", "values")]
 		names(dat_catch) <- c("rgn_id", "year", "catch")
 	
 	#extract effort
 	###############
-	dat_effort <- dat[dat$variable %in% c("nb_fishermen", "nb_fishing_gear"),]
+	dat_effort <- dat[dat$variable %in% c("fishermen", "fishing_gear"),]
 	
 	#average effort
 	###############
