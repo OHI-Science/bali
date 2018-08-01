@@ -64,24 +64,10 @@ setwd(dir_scripts)
 	###############
 	dat_all$cpue <- dat_all$catch/dat_all$effort
 	
-	#calculate msy and fopt for each subregion
-	###########################################
+	#calculate msy and fopt 
+	#######################
 	
-	a_msy <- NULL
-	a_fopt <- NULL
-	
-	for (aa in unique(dat_all$rgn_id)){
-		
-		al <- which(dat_all$rgn_id == aa)
-		
-	if (length(al > 0)){
-		
-		ald <- dat_all[al,]
-		
-	if (length(ald > 0)){
-		
-		
-		model <- lm(ald$cpue~ald$effort)
+		model <- lm(dat_all$cpue~dat_all$effort)
 		
 		intercept <- abs(model[[1]][[1]])
 		slope <- abs(model[[1]][[2]])
@@ -89,37 +75,32 @@ setwd(dir_scripts)
 		msy <- (intercept^2)/(4*slope)
 		
 		fopt <- (intercept)/(2*slope)
+	
+		
+			rgn_id <- seq(min(dat$rgn_id, na.rm = T),max(dat$rgn_id, na.rm = T),1)
+			year_dat <-  seq(min(dat$year, na.rm = T), max(dat$year, na.rm = T), 1)
+		
+		#save msy file
+		##############	
+		dat_msy <- expand.grid(x = rgn_id, y = year_dat)
+		dat_msy$values <- rep(msy, nrow(dat_msy))	
+		dat_msy <- dat_msy%>%rename(rgn_id = x, year = y, values = values)
 		
 		
-		dat_msy <- data.frame(rgn_id = ald$rgn_id, year = ald$year, values = msy)
 		
-		dat_fopt <- data.frame(rgn_id = ald$rgn_id, year = ald$year, values = fopt)
+				write_csv(dat_msy, paste(directory, "prep/", toupper(goal), "/", goal, "_msy_", region, year, ".csv", sep = ""))
+				write_csv(dat_msy, paste(directory, "region2017/layers/", goal, "_msy_", region, year, ".csv", sep = ""))
+				
+				
+		#save fopt file
+		##############	
+		dat_fopt <- expand.grid(x = rgn_id, y = year_dat)
+		dat_fopt$values <- rep(fopt, nrow(dat_fopt))	
+		dat_fopt <- dat_fopt%>%rename(rgn_id = x, year = y, values = values)
+		
+				write_csv(dat_fopt, paste(directory, "prep/", toupper(goal), "/", goal, "_fopt_", region, year, ".csv", sep = ""))
+				write_csv(dat_fopt, paste(directory, "region2017/layers/", goal, "_fopt_", region, year, ".csv", sep = ""))
 		
 		
-	a_msy <- rbind(a_msy, dat_msy)
-	a_fopt <- rbind(a_fopt, dat_fopt)	
-		
-		
-	
-	}
-	}
-	}
-	
-	
-	
-	## save data layer
-	##################
-	
-		write_csv(a_msy, paste(directory, "prep/", toupper(goal), "/", goal, "_msy_", region, year, ".csv", sep = ""))
-		write_csv(a_msy, paste(directory, "region2017/layers/", goal, "_msy_", region, year, ".csv", sep = ""))
-	
-		write_csv(a_fopt, paste(directory, "prep/", toupper(goal), "/", goal, "_fopt_", region, year, ".csv", sep = ""))
-		write_csv(a_fopt, paste(directory, "region2017/layers/", goal, "_fopt_", region, year, ".csv", sep = ""))
-	
-	
-	
-	
-	
-	
 	
 	
