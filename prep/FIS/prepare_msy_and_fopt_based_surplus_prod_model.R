@@ -60,6 +60,12 @@ setwd(dir_scripts)
 	############################
 	dat_all <- merge(dat_catch, dat_effort, by.x = c("rgn_id", "year"), all= T)
 	
+	#catch effort sum annually before CPUE calculation
+	dat_all <- setNames(aggregate(cbind(dat_all$catch, dat_all$effort)~dat_all$rgn_id,FUN = sum, na.rm = T), c("rgn_id", "catch", "effort")) 
+	
+	
+	
+	
 	#calculate cpue
 	###############
 	dat_all$cpue <- dat_all$catch/dat_all$effort
@@ -75,10 +81,12 @@ setwd(dir_scripts)
 		msy <- (intercept^2)/(4*slope)
 		
 		fopt <- (intercept)/(2*slope)
+				
 	
 		
 			rgn_id <- seq(min(dat$rgn_id, na.rm = T),max(dat$rgn_id, na.rm = T),1)
 			year_dat <-  seq(min(dat$year, na.rm = T), max(dat$year, na.rm = T), 1)
+			
 		
 		#save msy file
 		##############	
