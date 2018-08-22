@@ -3,10 +3,10 @@
 "FIS","fis_effort","fis_effort_bali2016.csv","vessel","vessel","rgn_id",,,"year","vessel",,TRUE,2000,2016,157,31015,FALSE,,,,8,FALSE
 "FIS","fis_msy","fis_msy_bali2016.csv","msy","msy","rgn_id",,,"year","msy",,TRUE,2000,2016,39103.3290372204,39103.3290372204,FALSE,,,,8,FALSE
 "FIS","cc_chl","cc_chl_anomaly_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2017,0,1,TRUE,,,,8,FALSE
-"FIS","cc_sst","cc_sst_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.0350107114,0.2257644751,TRUE,,,,8,FALSE
+"FIS","cc_sst","cc_sst_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.0350107113622795,0.225764475100932,TRUE,,,,8,FALSE
 "FIS pressureAO","fp_coral","fp_coral_index_mortality_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2011,2015,0,1,TRUE,,,,8,FALSE
-"FIS","fp_mpa","fp_mpa_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
-"FIS","fp_fishing_gear","fp_fishing_gear_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"FIS","fp_mpa","fp_mpa_placeholder.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,0,TRUE,,,,8,FALSE
+"FIS","fp_fishing_gear","fp_fishing_gear_placeholder.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,0,TRUE,,,,8,FALSE
 "MAR","mar_production","mar_mariculture_production_bali2016.csv","ton","ton","rgn_id",,,"year","ton",,TRUE,2000,2016,0.1,531334.3,FALSE,,,,8,FALSE
 "MAR","mar_extent","mar_mariculture_area_extent_bali2016.csv","km2","km2","rgn_id",,,"year","km2",,TRUE,2006,2015,0,6.8777,FALSE,,,,8,FALSE
 "MAR","po_ammonia","po_ammonia_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2009,2015,0,1,TRUE,,,,8,FALSE
