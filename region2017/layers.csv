@@ -61,3 +61,5 @@
 "CS CP","cs_seagrass_extent","cs_seagrass_extent_bali2016.csv","km2","km2","rgn_id",,"habitat","year","km2",,TRUE,2009,2015,0.12,6.85,FALSE,,,,8,FALSE
 "CS CP","cs_mangrove_health","cs_mangrove_health_bali2016.csv","health","ndvi","rgn_id",,"habitat","year","health",,TRUE,2012,2016,0.2183856393,0.742944,TRUE,,,,8,FALSE
 "CS CP","cs_seagrass_health","cs_seagrass_health_bali2016.csv","health","percentage","rgn_id",,"habitat","year","health",,TRUE,2007,2016,62.87,89.42,FALSE,,,,8,FALSE
+"CP","cp_coral_extent","cp_coral_extent_bali2016.csv","km2","km2","rgn_id",,"habitat","year","km2",,TRUE,2009,2015,0.75,44.59,FALSE,,,,8,FALSE
+"CP","cp_coral_health","cp_coral_health_bali2016.csv","health","health","rgn_id",,"habitat","year","health",,TRUE,2007,2016,41.4,52.86,FALSE,,,,8,FALSE
