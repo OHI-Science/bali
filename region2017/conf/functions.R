@@ -317,8 +317,23 @@ CS <- function(layers){
 
 		#reference values for each habitat and region id, the best values is choosed
 		############################################################################
-		reference_point <- health%>%group_by(habitat, rgn_id)%>%summarize(reference_point = max(health, na.rm = T))%>%ungroup()
+		reference_point <- health %>%
+	  group_by(habitat, rgn_id) %>%
+	  summarize(reference_point = max(health, na.rm = T)) %>%
+	  ungroup()
 
+	## Julie testing...
+	## Teja please review: some rgn_ids have NAs each year.
+	## Some regions don't have mangrove and that's fine,
+	## but maybe double-check that the code is behaving as we expect,
+	## perhaps separate the NA regions and recombine later ?
+
+	# health %>%
+	#   filter(habitat == "mangrove", rgn_id == 3) %>%
+	#   summarize(reference_point = max(health, na.rm = T))
+	# Warning message:
+	#   In max(health, na.rm = T) : no non-missing arguments to max; returning -Inf
+	# ## rgn_id 3 is all NAs:
 
 		#merge extent, health, total_extent, & reference point
 		######################################################
@@ -380,11 +395,11 @@ CS <- function(layers){
   ## create weights file for pressures/resilience calculations
   #############################################################
 	weights <- extent %>%
-    filter(extent > 0) %>%
+    filter(km2 > 0) %>%   ## Teja review: km2 is the column of interest
     mutate(rank = habitat.rank[habitat]) %>%
-    mutate(extent_rank = extent*rank) %>%
+    mutate(extent_rank = km2 * rank) %>% ## Teja review: km2 is the column of interest
     mutate(layer = "element_wts_cs_km2_x_storage") %>%
-    select(rgn_id=region_id, habitat, extent_rank, layer)
+    select(region_id = rgn_id, habitat, extent_rank, layer) ## Teja review: rename to region_id
 
 	layers$data$element_wts_cs_km2_x_storage <- weights
 
