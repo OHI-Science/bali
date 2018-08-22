@@ -1,0 +1,820 @@
+provinces,species,year,ton
+Bali,kurau,2009,NA
+Bali,kurau,2008,NA
+Bali,kurau,2007,NA
+Bali,kurau,2006,NA
+Bali,kurau,2005,NA
+Bali,kurau,2004,NA
+Bali,kurau,2003,NA
+Bali,kurau,2002,NA
+Bali,kurau,2001,NA
+Bali,kurau,2000,NA
+Bali,kurau,2010,NA
+Bali,kurau,2011,NA
+Bali,kurau,2012,NA
+Nusa Tenggara Timur,kurau,2009,NA
+Nusa Tenggara Timur,kurau,2008,NA
+Nusa Tenggara Timur,kurau,2007,NA
+Nusa Tenggara Timur,kurau,2006,NA
+Nusa Tenggara Timur,kurau,2005,NA
+Nusa Tenggara Timur,kurau,2004,NA
+Nusa Tenggara Timur,kurau,2003,NA
+Nusa Tenggara Timur,kurau,2002,NA
+Nusa Tenggara Timur,kurau,2001,NA
+Nusa Tenggara Timur,kurau,2000,NA
+Nusa Tenggara Timur,kurau,2010,71
+Nusa Tenggara Timur,kurau,2011,64
+Nusa Tenggara Timur,kurau,2012,NA
+Nusa Tenggara Barat,kurau,2009,7
+Nusa Tenggara Barat,kurau,2008,NA
+Nusa Tenggara Barat,kurau,2007,NA
+Nusa Tenggara Barat,kurau,2006,NA
+Nusa Tenggara Barat,kurau,2005,NA
+Nusa Tenggara Barat,kurau,2004,NA
+Nusa Tenggara Barat,kurau,2003,NA
+Nusa Tenggara Barat,kurau,2002,NA
+Nusa Tenggara Barat,kurau,2001,NA
+Nusa Tenggara Barat,kurau,2000,NA
+Nusa Tenggara Barat,kurau,2010,9
+Nusa Tenggara Barat,kurau,2011,NA
+Nusa Tenggara Barat,kurau,2012,NA
+Bali,Manyung,2009,28
+Bali,Kuwe,2009,10
+Bali,Layang,2009,1965
+Bali,Golok-golok,2009,
+Bali,Beloso/Buntut kerbo,2009,
+Bali,Ikan lidah,2009,
+Bali,Ikan terbang,2009,386
+Bali,Kakap merah/Bambangan,2009,134
+Bali,Kuniran,2009,
+Bali,Kurisi,2009,407
+Bali,Swanggi/Mata besar,2009,19
+Bali,Gulamah/Tigawaja,2009,
+Bali,Kembung,2009,686
+Bali,Banyar,2009,
+Bali,Kerapu karang,2009,623
+Bali,Kerapu bebek,2009,
+Bali,Kerapu balong,2009,
+Bali,Kerapu lumpur,2009,
+Bali,Kerapu sunu,2009,
+Bali,Layur,2009,350
+Nusa Tenggara Barat,Manyung,2009,23
+Nusa Tenggara Barat,Kuwe,2009,2550
+Nusa Tenggara Barat,Layang,2009,7010
+Nusa Tenggara Barat,Golok-golok,2009,72
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2009,364
+Nusa Tenggara Barat,Ikan lidah,2009,18
+Nusa Tenggara Barat,Ikan terbang,2009,150
+Nusa Tenggara Barat,Kakap merah/Bambangan,2009,4220
+Nusa Tenggara Barat,Kuniran,2009,610
+Nusa Tenggara Barat,Kurisi,2009,2498
+Nusa Tenggara Barat,Swanggi/Mata besar,2009,129
+Nusa Tenggara Barat,Gulamah/Tigawaja,2009,311
+Nusa Tenggara Barat,Kembung,2009,7380
+Nusa Tenggara Barat,Banyar,2009,261
+Nusa Tenggara Barat,Kerapu karang,2009,4116
+Nusa Tenggara Barat,Kerapu bebek,2009,88
+Nusa Tenggara Barat,Kerapu balong,2009,15
+Nusa Tenggara Barat,Kerapu lumpur,2009,120
+Nusa Tenggara Barat,Kerapu sunu,2009,305
+Nusa Tenggara Barat,Layur,2009,1166
+Nusa Tenggara Timur,Manyung,2009,
+Nusa Tenggara Timur,Kuwe,2009,1614
+Nusa Tenggara Timur,Layang,2009,10758
+Nusa Tenggara Timur,Golok-golok,2009,135
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2009,703
+Nusa Tenggara Timur,Ikan lidah,2009,38
+Nusa Tenggara Timur,Ikan terbang,2009,3762
+Nusa Tenggara Timur,Kakap merah/Bambangan,2009,5604
+Nusa Tenggara Timur,Kuniran,2009,
+Nusa Tenggara Timur,Kurisi,2009,2064
+Nusa Tenggara Timur,Swanggi/Mata besar,2009,
+Nusa Tenggara Timur,Gulamah/Tigawaja,2009,4
+Nusa Tenggara Timur,Kembung,2009,6921
+Nusa Tenggara Timur,Banyar,2009,9
+Nusa Tenggara Timur,Kerapu karang,2009,4118
+Nusa Tenggara Timur,Kerapu bebek,2009,472
+Nusa Tenggara Timur,Kerapu balong,2009,876
+Nusa Tenggara Timur,Kerapu lumpur,2009,110
+Nusa Tenggara Timur,Kerapu sunu,2009,1645
+Nusa Tenggara Timur,Layur,2009,311
+Bali,Manyung,2008,27
+Bali,Kuwe,2008,124
+Bali,Layang,2008,916
+Bali,Golok-golok,2008,
+Bali,Beloso/Buntut kerbo,2008,
+Bali,Ikan lidah,2008,
+Bali,Ikan terbang,2008,1171
+Bali,Kakap merah/Bambangan,2008,159
+Bali,Kuniran,2008,
+Bali,Kurisi,2008,331
+Bali,Swanggi/Mata besar,2008,4
+Bali,Gulamah/Tigawaja,2008,
+Bali,Kembung,2008,393
+Bali,Banyar,2008,
+Bali,Kerapu karang,2008,538
+Bali,Kerapu bebek,2008,16
+Bali,Kerapu balong,2008,
+Bali,Kerapu lumpur,2008,
+Bali,Kerapu sunu,2008,
+Bali,Layur,2008,363
+Nusa Tenggara Barat,Manyung,2008,140
+Nusa Tenggara Barat,Kuwe,2008,2242
+Nusa Tenggara Barat,Layang,2008,5700
+Nusa Tenggara Barat,Golok-golok,2008,125
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2008,441
+Nusa Tenggara Barat,Ikan lidah,2008,3
+Nusa Tenggara Barat,Ikan terbang,2008,358
+Nusa Tenggara Barat,Kakap merah/Bambangan,2008,4108
+Nusa Tenggara Barat,Kuniran,2008,10
+Nusa Tenggara Barat,Kurisi,2008,1862
+Nusa Tenggara Barat,Swanggi/Mata besar,2008,149
+Nusa Tenggara Barat,Gulamah/Tigawaja,2008,447
+Nusa Tenggara Barat,Kembung,2008,8968
+Nusa Tenggara Barat,Banyar,2008,84
+Nusa Tenggara Barat,Kerapu karang,2008,3960
+Nusa Tenggara Barat,Kerapu bebek,2008,50
+Nusa Tenggara Barat,Kerapu balong,2008,6
+Nusa Tenggara Barat,Kerapu lumpur,2008,11
+Nusa Tenggara Barat,Kerapu sunu,2008,322
+Nusa Tenggara Barat,Layur,2008,1145
+Nusa Tenggara Timur,Manyung,2008,90
+Nusa Tenggara Timur,Kuwe,2008,1462
+Nusa Tenggara Timur,Layang,2008,8849
+Nusa Tenggara Timur,Golok-golok,2008,70
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2008,1651
+Nusa Tenggara Timur,Ikan lidah,2008,363
+Nusa Tenggara Timur,Ikan terbang,2008,3577
+Nusa Tenggara Timur,Kakap merah/Bambangan,2008,4668
+Nusa Tenggara Timur,Kuniran,2008,
+Nusa Tenggara Timur,Kurisi,2008,2149
+Nusa Tenggara Timur,Swanggi/Mata besar,2008,
+Nusa Tenggara Timur,Gulamah/Tigawaja,2008,4
+Nusa Tenggara Timur,Kembung,2008,5918
+Nusa Tenggara Timur,Banyar,2008,11
+Nusa Tenggara Timur,Kerapu karang,2008,3919
+Nusa Tenggara Timur,Kerapu bebek,2008,479
+Nusa Tenggara Timur,Kerapu balong,2008,832
+Nusa Tenggara Timur,Kerapu lumpur,2008,118
+Nusa Tenggara Timur,Kerapu sunu,2008,1270
+Nusa Tenggara Timur,Layur,2008,73
+Bali,Manyung,2007,31
+Bali,Kuwe,2007,174
+Bali,Layang,2007,1426
+Bali,Golok-golok,2007,
+Bali,Beloso/Buntut kerbo,2007,
+Bali,Ikan lidah,2007,
+Bali,Ikan terbang,2007,972
+Bali,Kakap merah/Bambangan,2007,203
+Bali,Kuniran,2007,
+Bali,Kurisi,2007,360
+Bali,Swanggi/Mata besar,2007,5
+Bali,Gulamah/Tigawaja,2007,
+Bali,Kembung,2007,362
+Bali,Banyar,2007,
+Bali,Kerapu karang,2007,389
+Bali,Kerapu bebek,2007,35
+Bali,Kerapu balong,2007,
+Bali,Kerapu lumpur,2007,
+Bali,Kerapu sunu,2007,
+Bali,Layur,2007,1084
+Nusa Tenggara Barat,Manyung,2007,144
+Nusa Tenggara Barat,Kuwe,2007,2539
+Nusa Tenggara Barat,Layang,2007,5688
+Nusa Tenggara Barat,Golok-golok,2007,136
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2007,505
+Nusa Tenggara Barat,Ikan lidah,2007,3
+Nusa Tenggara Barat,Ikan terbang,2007,441
+Nusa Tenggara Barat,Kakap merah/Bambangan,2007,3899
+Nusa Tenggara Barat,Kuniran,2007,50
+Nusa Tenggara Barat,Kurisi,2007,1833
+Nusa Tenggara Barat,Swanggi/Mata besar,2007,145
+Nusa Tenggara Barat,Gulamah/Tigawaja,2007,662
+Nusa Tenggara Barat,Kembung,2007,8510
+Nusa Tenggara Barat,Banyar,2007,154
+Nusa Tenggara Barat,Kerapu karang,2007,4883
+Nusa Tenggara Barat,Kerapu bebek,2007,
+Nusa Tenggara Barat,Kerapu balong,2007,
+Nusa Tenggara Barat,Kerapu lumpur,2007,
+Nusa Tenggara Barat,Kerapu sunu,2007,75
+Nusa Tenggara Barat,Layur,2007,1112
+Nusa Tenggara Timur,Manyung,2007,193
+Nusa Tenggara Timur,Kuwe,2007,1156
+Nusa Tenggara Timur,Layang,2007,10210
+Nusa Tenggara Timur,Golok-golok,2007,293
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2007,
+Nusa Tenggara Timur,Ikan lidah,2007,
+Nusa Tenggara Timur,Ikan terbang,2007,3938
+Nusa Tenggara Timur,Kakap merah/Bambangan,2007,3417
+Nusa Tenggara Timur,Kuniran,2007,
+Nusa Tenggara Timur,Kurisi,2007,2364
+Nusa Tenggara Timur,Swanggi/Mata besar,2007,
+Nusa Tenggara Timur,Gulamah/Tigawaja,2007,
+Nusa Tenggara Timur,Kembung,2007,6643
+Nusa Tenggara Timur,Banyar,2007,
+Nusa Tenggara Timur,Kerapu karang,2007,3454
+Nusa Tenggara Timur,Kerapu bebek,2007,367
+Nusa Tenggara Timur,Kerapu balong,2007,1050
+Nusa Tenggara Timur,Kerapu lumpur,2007,100
+Nusa Tenggara Timur,Kerapu sunu,2007,1047
+Nusa Tenggara Timur,Layur,2007,107
+Bali,Manyung,2006,40
+Bali,Kuwe,2006,46
+Bali,Layang,2006,2398
+Bali,Golok-golok,2006,
+Bali,Beloso/Buntut kerbo,2006,
+Bali,Ikan lidah,2006,
+Bali,Ikan terbang,2006,991
+Bali,Kakap merah/Bambangan,2006,86
+Bali,Kuniran,2006,
+Bali,Kurisi,2006,349
+Bali,Swanggi/Mata besar,2006,
+Bali,Gulamah/Tigawaja,2006,
+Bali,Kembung,2006,356
+Bali,Banyar,2006,
+Bali,Kerapu karang,2006,345
+Bali,Kerapu bebek,2006,45
+Bali,Kerapu balong,2006,
+Bali,Kerapu lumpur,2006,
+Bali,Kerapu sunu,2006,
+Bali,Layur,2006,1050
+Nusa Tenggara Barat,Manyung,2006,49
+Nusa Tenggara Barat,Kuwe,2006,2201
+Nusa Tenggara Barat,Layang,2006,6701
+Nusa Tenggara Barat,Golok-golok,2006,127
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2006,451
+Nusa Tenggara Barat,Ikan lidah,2006,10
+Nusa Tenggara Barat,Ikan terbang,2006,744
+Nusa Tenggara Barat,Kakap merah/Bambangan,2006,2640
+Nusa Tenggara Barat,Kuniran,2006,37
+Nusa Tenggara Barat,Kurisi,2006,1340
+Nusa Tenggara Barat,Swanggi/Mata besar,2006,100
+Nusa Tenggara Barat,Gulamah/Tigawaja,2006,547
+Nusa Tenggara Barat,Kembung,2006,6679
+Nusa Tenggara Barat,Banyar,2006,110
+Nusa Tenggara Barat,Kerapu karang,2006,4060
+Nusa Tenggara Barat,Kerapu bebek,2006,
+Nusa Tenggara Barat,Kerapu balong,2006,
+Nusa Tenggara Barat,Kerapu lumpur,2006,
+Nusa Tenggara Barat,Kerapu sunu,2006,
+Nusa Tenggara Barat,Layur,2006,1638
+Nusa Tenggara Timur,Manyung,2006,
+Nusa Tenggara Timur,Kuwe,2006,1338
+Nusa Tenggara Timur,Layang,2006,3057
+Nusa Tenggara Timur,Golok-golok,2006,722
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2006,
+Nusa Tenggara Timur,Ikan lidah,2006,
+Nusa Tenggara Timur,Ikan terbang,2006,1042
+Nusa Tenggara Timur,Kakap merah/Bambangan,2006,1792
+Nusa Tenggara Timur,Kuniran,2006,
+Nusa Tenggara Timur,Kurisi,2006,1651
+Nusa Tenggara Timur,Swanggi/Mata besar,2006,183
+Nusa Tenggara Timur,Gulamah/Tigawaja,2006,
+Nusa Tenggara Timur,Kembung,2006,5912
+Nusa Tenggara Timur,Banyar,2006,
+Nusa Tenggara Timur,Kerapu karang,2006,2627
+Nusa Tenggara Timur,Kerapu bebek,2006,
+Nusa Tenggara Timur,Kerapu balong,2006,
+Nusa Tenggara Timur,Kerapu lumpur,2006,
+Nusa Tenggara Timur,Kerapu sunu,2006,
+Nusa Tenggara Timur,Layur,2006,5691
+Bali,Manyung,2005,34
+Bali,Kuwe,2005,59
+Bali,Layang,2005,1600
+Bali,Golok-golok,2005,
+Bali,Beloso/Buntut kerbo,2005,
+Bali,Ikan lidah,2005,
+Bali,Ikan terbang,2005,887
+Bali,Kakap merah/Bambangan,2005,55
+Bali,Kuniran,2005,
+Bali,Kurisi,2005,334
+Bali,Swanggi/Mata besar,2005,
+Bali,Gulamah/Tigawaja,2005,
+Bali,Kembung,2005,358
+Bali,Banyar,2005,3
+Bali,Kerapu karang,2005,358
+Bali,Kerapu bebek,2005,
+Bali,Kerapu balong,2005,
+Bali,Kerapu lumpur,2005,
+Bali,Kerapu sunu,2005,
+Bali,Layur,2005,588
+Nusa Tenggara Barat,Manyung,2005,43
+Nusa Tenggara Barat,Kuwe,2005,1750
+Nusa Tenggara Barat,Layang,2005,6136
+Nusa Tenggara Barat,Golok-golok,2005,111
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2005,110
+Nusa Tenggara Barat,Ikan lidah,2005,2
+Nusa Tenggara Barat,Ikan terbang,2005,611
+Nusa Tenggara Barat,Kakap merah/Bambangan,2005,891
+Nusa Tenggara Barat,Kuniran,2005,
+Nusa Tenggara Barat,Kurisi,2005,1037
+Nusa Tenggara Barat,Swanggi/Mata besar,2005,91
+Nusa Tenggara Barat,Gulamah/Tigawaja,2005,310
+Nusa Tenggara Barat,Kembung,2005,4837
+Nusa Tenggara Barat,Banyar,2005,
+Nusa Tenggara Barat,Kerapu karang,2005,3289
+Nusa Tenggara Barat,Kerapu bebek,2005,
+Nusa Tenggara Barat,Kerapu balong,2005,
+Nusa Tenggara Barat,Kerapu lumpur,2005,
+Nusa Tenggara Barat,Kerapu sunu,2005,
+Nusa Tenggara Barat,Layur,2005,1471
+Nusa Tenggara Timur,Manyung,2005,3
+Nusa Tenggara Timur,Kuwe,2005,1324
+Nusa Tenggara Timur,Layang,2005,4535
+Nusa Tenggara Timur,Golok-golok,2005,695
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2005,
+Nusa Tenggara Timur,Ikan lidah,2005,
+Nusa Tenggara Timur,Ikan terbang,2005,1090
+Nusa Tenggara Timur,Kakap merah/Bambangan,2005,1205
+Nusa Tenggara Timur,Kuniran,2005,
+Nusa Tenggara Timur,Kurisi,2005,1622
+Nusa Tenggara Timur,Swanggi/Mata besar,2005,228
+Nusa Tenggara Timur,Gulamah/Tigawaja,2005,
+Nusa Tenggara Timur,Kembung,2005,7612
+Nusa Tenggara Timur,Banyar,2005,
+Nusa Tenggara Timur,Kerapu karang,2005,3105
+Nusa Tenggara Timur,Kerapu bebek,2005,
+Nusa Tenggara Timur,Kerapu balong,2005,
+Nusa Tenggara Timur,Kerapu lumpur,2005,
+Nusa Tenggara Timur,Kerapu sunu,2005,
+Nusa Tenggara Timur,Layur,2005,6314
+Bali,Manyung,2004,47
+Bali,Kuwe,2004,64
+Bali,Layang,2004,663
+Bali,Golok-golok,2004,
+Bali,Beloso/Buntut kerbo,2004,
+Bali,Ikan lidah,2004,
+Bali,Ikan terbang,2004,657
+Bali,Kakap merah/Bambangan,2004,137
+Bali,Kuniran,2004,8
+Bali,Kurisi,2004,451
+Bali,Swanggi/Mata besar,2004,3
+Bali,Gulamah/Tigawaja,2004,
+Bali,Kembung,2004,294
+Bali,Banyar,2004,
+Bali,Kerapu karang,2004,249
+Bali,Kerapu bebek,2004,27
+Bali,Kerapu balong,2004,
+Bali,Kerapu lumpur,2004,
+Bali,Kerapu sunu,2004,
+Bali,Layur,2004,493
+Nusa Tenggara Barat,Manyung,2004,20
+Nusa Tenggara Barat,Kuwe,2004,1084
+Nusa Tenggara Barat,Layang,2004,4740
+Nusa Tenggara Barat,Golok-golok,2004,54
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2004,159
+Nusa Tenggara Barat,Ikan lidah,2004,
+Nusa Tenggara Barat,Ikan terbang,2004,3035
+Nusa Tenggara Barat,Kakap merah/Bambangan,2004,2149
+Nusa Tenggara Barat,Kuniran,2004,
+Nusa Tenggara Barat,Kurisi,2004,1001
+Nusa Tenggara Barat,Swanggi/Mata besar,2004,319
+Nusa Tenggara Barat,Gulamah/Tigawaja,2004,276
+Nusa Tenggara Barat,Kembung,2004,4989
+Nusa Tenggara Barat,Banyar,2004,
+Nusa Tenggara Barat,Kerapu karang,2004,2474
+Nusa Tenggara Barat,Kerapu bebek,2004,
+Nusa Tenggara Barat,Kerapu balong,2004,
+Nusa Tenggara Barat,Kerapu lumpur,2004,
+Nusa Tenggara Barat,Kerapu sunu,2004,
+Nusa Tenggara Barat,Layur,2004,1799
+Nusa Tenggara Timur,Manyung,2004,770
+Nusa Tenggara Timur,Kuwe,2004,997
+Nusa Tenggara Timur,Layang,2004,3983
+Nusa Tenggara Timur,Golok-golok,2004,186
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2004,315
+Nusa Tenggara Timur,Ikan lidah,2004,36
+Nusa Tenggara Timur,Ikan terbang,2004,3437
+Nusa Tenggara Timur,Kakap merah/Bambangan,2004,1505
+Nusa Tenggara Timur,Kuniran,2004,
+Nusa Tenggara Timur,Kurisi,2004,664
+Nusa Tenggara Timur,Swanggi/Mata besar,2004,239
+Nusa Tenggara Timur,Gulamah/Tigawaja,2004,285
+Nusa Tenggara Timur,Kembung,2004,4949
+Nusa Tenggara Timur,Banyar,2004,
+Nusa Tenggara Timur,Kerapu karang,2004,
+Nusa Tenggara Timur,Kerapu bebek,2004,
+Nusa Tenggara Timur,Kerapu balong,2004,
+Nusa Tenggara Timur,Kerapu lumpur,2004,
+Nusa Tenggara Timur,Kerapu sunu,2004,2069
+Nusa Tenggara Timur,Layur,2004,561
+Bali,Manyung,2003,23
+Bali,Kuwe,2003,61
+Bali,Layang,2003,829
+Bali,Golok-golok,2003,
+Bali,Beloso/Buntut kerbo,2003,
+Bali,Ikan lidah,2003,
+Bali,Ikan terbang,2003,5111
+Bali,Kakap merah/Bambangan,2003,2629
+Bali,Kuniran,2003,
+Bali,Kurisi,2003,253
+Bali,Swanggi/Mata besar,2003,
+Bali,Gulamah/Tigawaja,2003,
+Bali,Kembung,2003,362
+Bali,Banyar,2003,
+Bali,Kerapu karang,2003,222
+Bali,Kerapu bebek,2003,
+Bali,Kerapu balong,2003,
+Bali,Kerapu lumpur,2003,
+Bali,Kerapu sunu,2003,
+Bali,Layur,2003,1772
+Nusa Tenggara Barat,Manyung,2003,2
+Nusa Tenggara Barat,Kuwe,2003,3269
+Nusa Tenggara Barat,Layang,2003,5696
+Nusa Tenggara Barat,Golok-golok,2003,42
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2003,191
+Nusa Tenggara Barat,Ikan lidah,2003,
+Nusa Tenggara Barat,Ikan terbang,2003,350
+Nusa Tenggara Barat,Kakap merah/Bambangan,2003,1344
+Nusa Tenggara Barat,Kuniran,2003,
+Nusa Tenggara Barat,Kurisi,2003,1013
+Nusa Tenggara Barat,Swanggi/Mata besar,2003,69
+Nusa Tenggara Barat,Gulamah/Tigawaja,2003,528
+Nusa Tenggara Barat,Kembung,2003,4064
+Nusa Tenggara Barat,Banyar,2003,
+Nusa Tenggara Barat,Kerapu karang,2003,2595
+Nusa Tenggara Barat,Kerapu bebek,2003,
+Nusa Tenggara Barat,Kerapu balong,2003,
+Nusa Tenggara Barat,Kerapu lumpur,2003,
+Nusa Tenggara Barat,Kerapu sunu,2003,
+Nusa Tenggara Barat,Layur,2003,1410
+Nusa Tenggara Timur,Manyung,2003,725
+Nusa Tenggara Timur,Kuwe,2003,678
+Nusa Tenggara Timur,Layang,2003,4696
+Nusa Tenggara Timur,Golok-golok,2003,205
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2003,224
+Nusa Tenggara Timur,Ikan lidah,2003,389
+Nusa Tenggara Timur,Ikan terbang,2003,1757
+Nusa Tenggara Timur,Kakap merah/Bambangan,2003,2638
+Nusa Tenggara Timur,Kuniran,2003,
+Nusa Tenggara Timur,Kurisi,2003,188
+Nusa Tenggara Timur,Swanggi/Mata besar,2003,143
+Nusa Tenggara Timur,Gulamah/Tigawaja,2003,125
+Nusa Tenggara Timur,Kembung,2003,2417
+Nusa Tenggara Timur,Banyar,2003,
+Nusa Tenggara Timur,Kerapu karang,2003,2613
+Nusa Tenggara Timur,Kerapu bebek,2003,
+Nusa Tenggara Timur,Kerapu balong,2003,
+Nusa Tenggara Timur,Kerapu lumpur,2003,
+Nusa Tenggara Timur,Kerapu sunu,2003,
+Nusa Tenggara Timur,Layur,2003,222
+Bali,Manyung,2002,5
+Bali,Kuwe,2002,175
+Bali,Layang,2002,1635
+Bali,Golok-golok,2002,
+Bali,Beloso/Buntut kerbo,2002,
+Bali,Ikan lidah,2002,
+Bali,Ikan terbang,2002,468
+Bali,Kakap merah/Bambangan,2002,31
+Bali,Kuniran,2002,
+Bali,Kurisi,2002,303
+Bali,Swanggi/Mata besar,2002,
+Bali,Gulamah/Tigawaja,2002,
+Bali,Kembung,2002,132
+Bali,Banyar,2002,
+Bali,Kerapu karang,2002,267
+Bali,Kerapu bebek,2002,
+Bali,Kerapu balong,2002,
+Bali,Kerapu lumpur,2002,
+Bali,Kerapu sunu,2002,
+Bali,Layur,2002,181
+Nusa Tenggara Barat,Manyung,2002,
+Nusa Tenggara Barat,Kuwe,2002,3047
+Nusa Tenggara Barat,Layang,2002,6634
+Nusa Tenggara Barat,Golok-golok,2002,34
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2002,177
+Nusa Tenggara Barat,Ikan lidah,2002,
+Nusa Tenggara Barat,Ikan terbang,2002,369
+Nusa Tenggara Barat,Kakap merah/Bambangan,2002,1443
+Nusa Tenggara Barat,Kuniran,2002,
+Nusa Tenggara Barat,Kurisi,2002,1176
+Nusa Tenggara Barat,Swanggi/Mata besar,2002,91
+Nusa Tenggara Barat,Gulamah/Tigawaja,2002,515
+Nusa Tenggara Barat,Kembung,2002,4279
+Nusa Tenggara Barat,Banyar,2002,
+Nusa Tenggara Barat,Kerapu karang,2002,2070
+Nusa Tenggara Barat,Kerapu bebek,2002,
+Nusa Tenggara Barat,Kerapu balong,2002,
+Nusa Tenggara Barat,Kerapu lumpur,2002,
+Nusa Tenggara Barat,Kerapu sunu,2002,
+Nusa Tenggara Barat,Layur,2002,1291
+Nusa Tenggara Timur,Manyung,2002,270
+Nusa Tenggara Timur,Kuwe,2002,606
+Nusa Tenggara Timur,Layang,2002,5921
+Nusa Tenggara Timur,Golok-golok,2002,460
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2002,53
+Nusa Tenggara Timur,Ikan lidah,2002,8
+Nusa Tenggara Timur,Ikan terbang,2002,2466
+Nusa Tenggara Timur,Kakap merah/Bambangan,2002,1866
+Nusa Tenggara Timur,Kuniran,2002,
+Nusa Tenggara Timur,Kurisi,2002,131
+Nusa Tenggara Timur,Swanggi/Mata besar,2002,112
+Nusa Tenggara Timur,Gulamah/Tigawaja,2002,86
+Nusa Tenggara Timur,Kembung,2002,3470
+Nusa Tenggara Timur,Banyar,2002,
+Nusa Tenggara Timur,Kerapu karang,2002,1604
+Nusa Tenggara Timur,Kerapu bebek,2002,
+Nusa Tenggara Timur,Kerapu balong,2002,
+Nusa Tenggara Timur,Kerapu lumpur,2002,
+Nusa Tenggara Timur,Kerapu sunu,2002,
+Nusa Tenggara Timur,Layur,2002,329
+Bali,Manyung,2001,72
+Bali,Kuwe,2001,70
+Bali,Layang,2001,3184
+Bali,Golok-golok,2001,
+Bali,Beloso/Buntut kerbo,2001,
+Bali,Ikan lidah,2001,
+Bali,Ikan terbang,2001,426
+Bali,Kakap merah/Bambangan,2001,46
+Bali,Kuniran,2001,
+Bali,Kurisi,2001,302
+Bali,Swanggi/Mata besar,2001,4
+Bali,Gulamah/Tigawaja,2001,
+Bali,Kembung,2001,385
+Bali,Banyar,2001,
+Bali,Kerapu karang,2001,144
+Bali,Kerapu bebek,2001,
+Bali,Kerapu balong,2001,
+Bali,Kerapu lumpur,2001,
+Bali,Kerapu sunu,2001,
+Bali,Layur,2001,182
+Nusa Tenggara Barat,Manyung,2001,36
+Nusa Tenggara Barat,Kuwe,2001,3306
+Nusa Tenggara Barat,Layang,2001,6907
+Nusa Tenggara Barat,Golok-golok,2001,34
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2001,286
+Nusa Tenggara Barat,Ikan lidah,2001,
+Nusa Tenggara Barat,Ikan terbang,2001,384
+Nusa Tenggara Barat,Kakap merah/Bambangan,2001,1166
+Nusa Tenggara Barat,Kuniran,2001,
+Nusa Tenggara Barat,Kurisi,2001,1318
+Nusa Tenggara Barat,Swanggi/Mata besar,2001,113
+Nusa Tenggara Barat,Gulamah/Tigawaja,2001,556
+Nusa Tenggara Barat,Kembung,2001,4859
+Nusa Tenggara Barat,Banyar,2001,
+Nusa Tenggara Barat,Kerapu karang,2001,2352
+Nusa Tenggara Barat,Kerapu bebek,2001,
+Nusa Tenggara Barat,Kerapu balong,2001,
+Nusa Tenggara Barat,Kerapu lumpur,2001,
+Nusa Tenggara Barat,Kerapu sunu,2001,
+Nusa Tenggara Barat,Layur,2001,904
+Nusa Tenggara Timur,Manyung,2001,247
+Nusa Tenggara Timur,Kuwe,2001,346
+Nusa Tenggara Timur,Layang,2001,1949
+Nusa Tenggara Timur,Golok-golok,2001,745
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2001,11
+Nusa Tenggara Timur,Ikan lidah,2001,8
+Nusa Tenggara Timur,Ikan terbang,2001,2027
+Nusa Tenggara Timur,Kakap merah/Bambangan,2001,1847
+Nusa Tenggara Timur,Kuniran,2001,
+Nusa Tenggara Timur,Kurisi,2001,61
+Nusa Tenggara Timur,Swanggi/Mata besar,2001,113
+Nusa Tenggara Timur,Gulamah/Tigawaja,2001,86
+Nusa Tenggara Timur,Kembung,2001,3542
+Nusa Tenggara Timur,Banyar,2001,
+Nusa Tenggara Timur,Kerapu karang,2001,1739
+Nusa Tenggara Timur,Kerapu bebek,2001,
+Nusa Tenggara Timur,Kerapu balong,2001,
+Nusa Tenggara Timur,Kerapu lumpur,2001,
+Nusa Tenggara Timur,Kerapu sunu,2001,
+Nusa Tenggara Timur,Layur,2001,
+Bali,Manyung,2000,52
+Bali,Kuwe,2000,39
+Bali,Layang,2000,825
+Bali,Golok-golok,2000,
+Bali,Beloso/Buntut kerbo,2000,
+Bali,Ikan lidah,2000,
+Bali,Ikan terbang,2000,969
+Bali,Kakap merah/Bambangan,2000,139
+Bali,Kuniran,2000,
+Bali,Kurisi,2000,103
+Bali,Swanggi/Mata besar,2000,7
+Bali,Gulamah/Tigawaja,2000,
+Bali,Kembung,2000,166
+Bali,Banyar,2000,
+Bali,Kerapu karang,2000,265
+Bali,Kerapu bebek,2000,
+Bali,Kerapu balong,2000,
+Bali,Kerapu lumpur,2000,
+Bali,Kerapu sunu,2000,
+Bali,Layur,2000,276
+Nusa Tenggara Barat,Manyung,2000,
+Nusa Tenggara Barat,Kuwe,2000,3304
+Nusa Tenggara Barat,Layang,2000,6143
+Nusa Tenggara Barat,Golok-golok,2000,22
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2000,213
+Nusa Tenggara Barat,Ikan lidah,2000,
+Nusa Tenggara Barat,Ikan terbang,2000,287
+Nusa Tenggara Barat,Kakap merah/Bambangan,2000,1284
+Nusa Tenggara Barat,Kuniran,2000,
+Nusa Tenggara Barat,Kurisi,2000,1177
+Nusa Tenggara Barat,Swanggi/Mata besar,2000,90
+Nusa Tenggara Barat,Gulamah/Tigawaja,2000,585
+Nusa Tenggara Barat,Kembung,2000,5240
+Nusa Tenggara Barat,Banyar,2000,
+Nusa Tenggara Barat,Kerapu karang,2000,2686
+Nusa Tenggara Barat,Kerapu bebek,2000,
+Nusa Tenggara Barat,Kerapu balong,2000,
+Nusa Tenggara Barat,Kerapu lumpur,2000,
+Nusa Tenggara Barat,Kerapu sunu,2000,
+Nusa Tenggara Barat,Layur,2000,1235
+Nusa Tenggara Timur,Manyung,2000,310
+Nusa Tenggara Timur,Kuwe,2000,446
+Nusa Tenggara Timur,Layang,2000,3685
+Nusa Tenggara Timur,Golok-golok,2000,779
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2000,13
+Nusa Tenggara Timur,Ikan lidah,2000,6
+Nusa Tenggara Timur,Ikan terbang,2000,1772
+Nusa Tenggara Timur,Kakap merah/Bambangan,2000,1619
+Nusa Tenggara Timur,Kuniran,2000,
+Nusa Tenggara Timur,Kurisi,2000,106
+Nusa Tenggara Timur,Swanggi/Mata besar,2000,191
+Nusa Tenggara Timur,Gulamah/Tigawaja,2000,79
+Nusa Tenggara Timur,Kembung,2000,3588
+Nusa Tenggara Timur,Banyar,2000,
+Nusa Tenggara Timur,Kerapu karang,2000,1378
+Nusa Tenggara Timur,Kerapu bebek,2000,
+Nusa Tenggara Timur,Kerapu balong,2000,
+Nusa Tenggara Timur,Kerapu lumpur,2000,
+Nusa Tenggara Timur,Kerapu sunu,2000,
+Nusa Tenggara Timur,Layur,2000,643
+Bali,Manyung,2010,44
+Bali,Kuwe,2010,18
+Bali,Layang,2010,2691
+Bali,Golok-golok,2010,
+Bali,Beloso/Buntut kerbo,2010,
+Bali,Ikan lidah,2010,
+Bali,Ikan terbang,2010,443
+Bali,Kakap merah/Bambangan,2010,145
+Bali,Kuniran,2010,
+Bali,Kurisi,2010,629
+Bali,Swanggi/Mata besar,2010,44
+Bali,Gulamah/Tigawaja,2010,
+Bali,Kembung,2010,1492
+Bali,Banyar,2010,2
+Bali,Kerapu karang,2010,869
+Bali,Kerapu bebek,2010,
+Bali,Kerapu balong,2010,
+Bali,Kerapu lumpur,2010,
+Bali,Kerapu sunu,2010,
+Bali,Layur,2010,723
+Nusa Tenggara Barat,Manyung,2010,113
+Nusa Tenggara Barat,Kuwe,2010,2385
+Nusa Tenggara Barat,Layang,2010,8942
+Nusa Tenggara Barat,Golok-golok,2010,91
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2010,480
+Nusa Tenggara Barat,Ikan lidah,2010,19
+Nusa Tenggara Barat,Ikan terbang,2010,524
+Nusa Tenggara Barat,Kakap merah/Bambangan,2010,4091
+Nusa Tenggara Barat,Kuniran,2010,233
+Nusa Tenggara Barat,Kurisi,2010,2066
+Nusa Tenggara Barat,Swanggi/Mata besar,2010,113
+Nusa Tenggara Barat,Gulamah/Tigawaja,2010,314
+Nusa Tenggara Barat,Kembung,2010,8466
+Nusa Tenggara Barat,Banyar,2010,247
+Nusa Tenggara Barat,Kerapu karang,2010,4143
+Nusa Tenggara Barat,Kerapu bebek,2010,95
+Nusa Tenggara Barat,Kerapu balong,2010,63
+Nusa Tenggara Barat,Kerapu lumpur,2010,100
+Nusa Tenggara Barat,Kerapu sunu,2010,392
+Nusa Tenggara Barat,Layur,2010,963
+Nusa Tenggara Timur,Manyung,2010,
+Nusa Tenggara Timur,Kuwe,2010,1104
+Nusa Tenggara Timur,Layang,2010,5428
+Nusa Tenggara Timur,Golok-golok,2010,24
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2010,1
+Nusa Tenggara Timur,Ikan lidah,2010,
+Nusa Tenggara Timur,Ikan terbang,2010,991
+Nusa Tenggara Timur,Kakap merah/Bambangan,2010,3423
+Nusa Tenggara Timur,Kuniran,2010,
+Nusa Tenggara Timur,Kurisi,2010,1263
+Nusa Tenggara Timur,Swanggi/Mata besar,2010,139
+Nusa Tenggara Timur,Gulamah/Tigawaja,2010,22
+Nusa Tenggara Timur,Kembung,2010,5142
+Nusa Tenggara Timur,Banyar,2010,28
+Nusa Tenggara Timur,Kerapu karang,2010,2822
+Nusa Tenggara Timur,Kerapu bebek,2010,132
+Nusa Tenggara Timur,Kerapu balong,2010,582
+Nusa Tenggara Timur,Kerapu lumpur,2010,257
+Nusa Tenggara Timur,Kerapu sunu,2010,1014
+Nusa Tenggara Timur,Layur,2010,1689
+Bali,Manyung,2011,602
+Bali,Kuwe,2011,140
+Bali,Layang,2011,7080
+Bali,Golok-golok,2011,0
+Bali,Beloso/Buntut kerbo,2011,0
+Bali,Ikan lidah,2011,0
+Bali,Ikan terbang,2011,629
+Bali,Kakap merah/Bambangan,2011,95
+Bali,Kuniran,2011,0
+Bali,Kurisi,2011,478
+Bali,Swanggi/Mata besar,2011,9
+Bali,Gulamah/Tigawaja,2011,0
+Bali,Kembung,2011,608
+Bali,Banyar,2011,116
+Bali,Kerapu karang,2011,671
+Bali,Kerapu bebek,2011,0
+Bali,Kerapu balong,2011,0
+Bali,Kerapu lumpur,2011,0
+Bali,Kerapu sunu,2011,1
+Bali,Layur,2011,452
+Nusa Tenggara Barat,Manyung,2011,86
+Nusa Tenggara Barat,Kuwe,2011,2293
+Nusa Tenggara Barat,Layang,2011,8292
+Nusa Tenggara Barat,Golok-golok,2011,104
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2011,595
+Nusa Tenggara Barat,Ikan lidah,2011,0
+Nusa Tenggara Barat,Ikan terbang,2011,597
+Nusa Tenggara Barat,Kakap merah/Bambangan,2011,3649
+Nusa Tenggara Barat,Kuniran,2011,344
+Nusa Tenggara Barat,Kurisi,2011,2065
+Nusa Tenggara Barat,Swanggi/Mata besar,2011,96
+Nusa Tenggara Barat,Gulamah/Tigawaja,2011,381
+Nusa Tenggara Barat,Kembung,2011,6955
+Nusa Tenggara Barat,Banyar,2011,234
+Nusa Tenggara Barat,Kerapu karang,2011,4438
+Nusa Tenggara Barat,Kerapu bebek,2011,207
+Nusa Tenggara Barat,Kerapu balong,2011,21
+Nusa Tenggara Barat,Kerapu lumpur,2011,142
+Nusa Tenggara Barat,Kerapu sunu,2011,366
+Nusa Tenggara Barat,Layur,2011,1294
+Nusa Tenggara Timur,Manyung,2011,1
+Nusa Tenggara Timur,Kuwe,2011,1527
+Nusa Tenggara Timur,Layang,2011,6200
+Nusa Tenggara Timur,Golok-golok,2011,164
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2011,0
+Nusa Tenggara Timur,Ikan lidah,2011,0
+Nusa Tenggara Timur,Ikan terbang,2011,1616
+Nusa Tenggara Timur,Kakap merah/Bambangan,2011,3118
+Nusa Tenggara Timur,Kuniran,2011,0
+Nusa Tenggara Timur,Kurisi,2011,1601
+Nusa Tenggara Timur,Swanggi/Mata besar,2011,245
+Nusa Tenggara Timur,Gulamah/Tigawaja,2011,10
+Nusa Tenggara Timur,Kembung,2011,4319
+Nusa Tenggara Timur,Banyar,2011,22
+Nusa Tenggara Timur,Kerapu karang,2011,2733
+Nusa Tenggara Timur,Kerapu bebek,2011,192
+Nusa Tenggara Timur,Kerapu balong,2011,532
+Nusa Tenggara Timur,Kerapu lumpur,2011,74
+Nusa Tenggara Timur,Kerapu sunu,2011,867
+Nusa Tenggara Timur,Layur,2011,1880
+Bali,Manyung,2012,48
+Bali,Kuwe,2012,65
+Bali,Layang,2012,4734
+Bali,Golok-golok,2012,0
+Bali,Beloso/Buntut kerbo,2012,0
+Bali,Ikan lidah,2012,0
+Bali,Ikan terbang,2012,625
+Bali,Kakap merah/Bambangan,2012,259
+Bali,Kuniran,2012,2
+Bali,Kurisi,2012,245
+Bali,Swanggi/Mata besar,2012,6
+Bali,Gulamah/Tigawaja,2012,6
+Bali,Kembung,2012,1096
+Bali,Banyar,2012,32
+Bali,Kerapu karang,2012,668
+Bali,Kerapu bebek,2012,0
+Bali,Kerapu balong,2012,0
+Bali,Kerapu lumpur,2012,0
+Bali,Kerapu sunu,2012,0
+Bali,Layur,2012,226
+Nusa Tenggara Barat,Manyung,2012,115
+Nusa Tenggara Barat,Kuwe,2012,1880
+Nusa Tenggara Barat,Layang,2012,8447
+Nusa Tenggara Barat,Golok-golok,2012,70
+Nusa Tenggara Barat,Beloso/Buntut kerbo,2012,549
+Nusa Tenggara Barat,Ikan lidah,2012,0
+Nusa Tenggara Barat,Ikan terbang,2012,825
+Nusa Tenggara Barat,Kakap merah/Bambangan,2012,3334
+Nusa Tenggara Barat,Kuniran,2012,578
+Nusa Tenggara Barat,Kurisi,2012,1630
+Nusa Tenggara Barat,Swanggi/Mata besar,2012,117
+Nusa Tenggara Barat,Gulamah/Tigawaja,2012,255
+Nusa Tenggara Barat,Kembung,2012,7496
+Nusa Tenggara Barat,Banyar,2012,293
+Nusa Tenggara Barat,Kerapu karang,2012,3322
+Nusa Tenggara Barat,Kerapu bebek,2012,134
+Nusa Tenggara Barat,Kerapu balong,2012,28
+Nusa Tenggara Barat,Kerapu lumpur,2012,197
+Nusa Tenggara Barat,Kerapu sunu,2012,398
+Nusa Tenggara Barat,Layur,2012,1462
+Nusa Tenggara Timur,Manyung,2012,21
+Nusa Tenggara Timur,Kuwe,2012,1103
+Nusa Tenggara Timur,Layang,2012,4410
+Nusa Tenggara Timur,Golok-golok,2012,62
+Nusa Tenggara Timur,Beloso/Buntut kerbo,2012,0
+Nusa Tenggara Timur,Ikan lidah,2012,2
+Nusa Tenggara Timur,Ikan terbang,2012,990
+Nusa Tenggara Timur,Kakap merah/Bambangan,2012,2466
+Nusa Tenggara Timur,Kuniran,2012,0
+Nusa Tenggara Timur,Kurisi,2012,1010
+Nusa Tenggara Timur,Swanggi/Mata besar,2012,55
+Nusa Tenggara Timur,Gulamah/Tigawaja,2012,1
+Nusa Tenggara Timur,Kembung,2012,3355
+Nusa Tenggara Timur,Banyar,2012,14
+Nusa Tenggara Timur,Kerapu karang,2012,2435
+Nusa Tenggara Timur,Kerapu bebek,2012,190
+Nusa Tenggara Timur,Kerapu balong,2012,286
+Nusa Tenggara Timur,Kerapu lumpur,2012,136
+Nusa Tenggara Timur,Kerapu sunu,2012,1004
+Nusa Tenggara Timur,Layur,2012,387
