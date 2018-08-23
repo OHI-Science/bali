@@ -15,3 +15,11 @@ scores <- ohicore::CalculateAll(conf, layers)
 
 ## save scores as scores.csv
 write.csv(scores, 'scores.csv', na='', row.names=FALSE)
+
+## visualizations ---
+
+## source script (to be incorporated into ohicore)
+source('https://raw.githubusercontent.com/OHI-Science/arc/master/circle2016/plot_flower_local.R')
+
+PlotFlower(assessment_name = "Bali",
+           dir_fig_save    = "reports/figures")
