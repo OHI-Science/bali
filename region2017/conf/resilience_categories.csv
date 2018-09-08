@@ -1,3 +1,16 @@
 layer,category,category_type,subcategory,weight
 fp_mpa,ecological,regulatory,fishing_pressure,1
 fp_fishing_gear,ecological,regulatory,fishing_pressure,1
+wgi_bali,social,social,social,1
+spi_bali,social,social,social,1
+g_addition_mariculture,ecological,regulatory,goal,1
+g_government_support,ecological,regulatory,goal,1
+g_mariculture_regulation,ecological,regulatory,goal,1
+g_fg_diversity,ecological,regulatory,goal,1
+fp_kkp_regulation,ecological,regulatory,fishing_pressure,1
+hd_sempadan,ecological,regulatory,habitat_destruction,1
+hd_kawasan_hutan,ecological,regulatory,habitat_destruction,1
+hd_kawasan_mangrove,ecological,regulatory,habitat_destruction,1
+conservation_community,social,social,social,1
+g_law_enforcement,ecological,regulatory,goal,1
+desa_wisata,social,social,social,1

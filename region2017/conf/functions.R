@@ -419,8 +419,13 @@ CS <- function(layers){
     select(rgn_id=region_id, habitat, extent_rank, layer)
     
 	layers$data$element_wts_cs_km2_x_storage <- weights
-
-
+	
+	weights <- weights%>%select(rgn_id, habitat, extent_rank)
+	
+	write_csv(weights, "~/github/bali/region2017/layers/element_wts_cs_km2_x_storage.csv")
+	
+		
+	
 	print(scores)
 	
 	return(scores)
@@ -538,6 +543,10 @@ CP <- function(layers){
 
 	layers$data$element_wts_cp_km2_x_protection <- weights
   
+  
+	weights <- weights%>%select(rgn_id, habitat, extent_rank)
+	
+	write_csv(weights, "~/github/bali/region2017/layers/element_wts_cp_km2_x_protection.csv")
 	
 	print(scores)
 	
@@ -693,8 +702,15 @@ HAB <- function(layers){
 			mutate(boolean = 1) %>%
 			mutate(layer = "element_wts_hab_pres_abs") %>%
 			select(rgn_id=rgn_id, habitat, boolean, layer)
+			
+			weights <- weights%>%group_by(rgn_id, habitat)%>%summarize(boolean = mean(boolean, na.rm = T))%>%ungroup()
 
 		  layers$data$element_wts_hab_pres_abs <- weights
+		  
+		  weights <- weights%>%select(rgn_id, habitat, boolean)
+		  
+		 	
+		  write_csv(weights, "~/github/bali/region2017/layers/element_wts_hab_pres_abs.csv")
 			
 	print(scores)
 	
@@ -749,13 +765,16 @@ LSP <- function(layers){
 	
 }
 
+
+
 FinalizeScores = function(layers, conf, scores){
 
   # get regions
   rgns = SelectLayersData(layers, layers=conf$config$layer_region_labels, narrow = TRUE)
   
   print(rgns)
-
+  
+ 
   # add NAs to missing combos (region_id, goal, dimension)
   d = expand.grid(list(score_NA  = NA,
                        region_id = c(rgns[,'id_num'], 0),
