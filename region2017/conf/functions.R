@@ -1,6 +1,8 @@
 ## functions.R.
 ## Each OHI goal model is a separate R function. The function name is the 2- or 3- letter code for each goal or subgoal; for example, FIS is the Fishing subgoal of Food Provision (FP).
 
+
+
 FIS <- function(layers){
 	
 	 
@@ -95,7 +97,9 @@ FIS <- function(layers){
 	#####################################
 	scores <- rbind(status, trend)%>%mutate(goal = "FIS")%>%data.frame()
 	
-	print(scores)
+	scores <- scores%>%select(goal, dimension, region_id, score)
+	
+		
 	
 	return(scores)
 	
@@ -188,16 +192,20 @@ MAR <- function(layers){
 		#trend MAR
 		##########
 		
-		trend <- r.trend%>%mutate(dimension = "trend")%>%rename(region_id = rgn_id, score = trend, dimension = dimension)
+		trend <- r.trend%>%mutate(dimension = "trend")%>%rename(region_id = rgn_id, dimension = dimension, score = trend)
 		
 		#assembles dimensions (status, trend)
 		#####################################
 		scores <- rbind(status, trend)%>%mutate(goal = "MAR")%>%data.frame()
+		
+		scores <- scores%>%select(goal, dimension, region_id, score)
+		
 	
-		print(scores)
 		
+								
 		return(scores)
-		
+				
+			
 }
 
 
@@ -296,8 +304,10 @@ AO <- function(layers){
 	#####################################
 	scores <- rbind(status, trend)%>%mutate(goal = "AO")%>%data.frame()
 	
-	print(scores)
+	scores <- scores%>%select(goal, dimension, region_id, score)
 	
+		
+		
 	return(scores)
 	
 
@@ -394,6 +404,12 @@ CS <- function(layers){
 				
 				
 		scores <- rbind(status, trend)%>%mutate(goal = "CS")%>%data.frame()
+		
+		scores <- scores%>%select(goal, dimension, region_id, score)
+		
+		
+		
+		
 	
 	## set ranks for each habitat
 	#############################
@@ -420,13 +436,13 @@ CS <- function(layers){
     
 	layers$data$element_wts_cs_km2_x_storage <- weights
 	
-	weights <- weights%>%select(rgn_id, habitat, extent_rank)
+	#weights <- weights%>%select(rgn_id, habitat, extent_rank)
 	
 	write_csv(weights, "~/github/bali/region2017/layers/element_wts_cs_km2_x_storage.csv")
 	
 		
 	
-	print(scores)
+	
 	
 	return(scores)
 	
@@ -517,7 +533,8 @@ CP <- function(layers){
 		
 		scores <- rbind(status, trend)%>%mutate(goal = "CP")%>%data.frame()
 		
-		
+		scores <- scores%>%select(goal, dimension, region_id, score)
+				
 	
 	## set ranks for each habitat
 	#############################
@@ -544,13 +561,11 @@ CP <- function(layers){
 	layers$data$element_wts_cp_km2_x_protection <- weights
   
   
-	weights <- weights%>%select(rgn_id, habitat, extent_rank)
+	#weights <- weights%>%select(rgn_id, habitat, extent_rank)
 	
 	write_csv(weights, "~/github/bali/region2017/layers/element_wts_cp_km2_x_protection.csv")
 	
-	print(scores)
 	
-
 	# return scores
 	return(scores)
 	
@@ -624,11 +639,10 @@ TR <- function(layers){
 		trend <- trend%>%mutate(dimension = "trend")%>%rename(region_id = rgn_id, score = score, dimension = dimension)
 		
 		scores <- rbind(status, trend)%>%mutate(goal = "TR")%>%data.frame()
+		scores <- scores%>%select(goal, dimension, region_id, score)
 		
+				
 		
-		print(scores)
-
-
 		# return scores
 		return(scores)
 	
@@ -689,8 +703,11 @@ HAB <- function(layers){
 		trend <- trend%>%mutate(dimension = "trend")%>%rename(region_id = rgn_id, score = score, dimension = dimension)
 		
 		scores <- rbind(status, trend)%>%mutate(goal = "HAB")%>%data.frame()
+		scores <- scores%>%select(goal, dimension, region_id, score)
 		
-				
+		
+		
+						
 		## create weights file for pressures/resilience calculations
 		############################################################
 
@@ -703,19 +720,20 @@ HAB <- function(layers){
 			mutate(layer = "element_wts_hab_pres_abs") %>%
 			select(rgn_id=rgn_id, habitat, boolean, layer)
 			
-			weights <- weights%>%group_by(rgn_id, habitat)%>%summarize(boolean = mean(boolean, na.rm = T))%>%ungroup()
+			weights <- weights%>%group_by(rgn_id, habitat, layer)%>%summarize(boolean = mean(boolean, na.rm = T))%>%ungroup()
 
 		  layers$data$element_wts_hab_pres_abs <- weights
 		  
-		  weights <- weights%>%select(rgn_id, habitat, boolean)
-		  
+		  		  
 		 	
-		  write_csv(weights, "~/github/bali/region2017/layers/element_wts_hab_pres_abs.csv")
-			
-	print(scores)
+		  
 	
 	# return scores
 	return(scores)
+	
+	
+	
+	
 	
 }
 
@@ -727,9 +745,11 @@ SPP <- function(layers){
 	
 	
 	scores <- rbind(status, trend)%>%mutate(goal = "SPP")%>%data.frame()
+	scores <- scores%>%select(goal, dimension, region_id, score)
+	
 	 
-	print(scores) 
-
+	
+ 
   return(scores)
 	
 }
@@ -742,9 +762,10 @@ ICO <- function(layers){
 	
 	
 	scores <- rbind(status, trend)%>%mutate(goal = "ICO")%>%data.frame()
+	scores <- scores%>%select(goal, dimension, region_id, score)
 	 
-	print(scores) 
-
+	
+		
   return(scores)
 	
 }
@@ -757,22 +778,136 @@ LSP <- function(layers){
 	
 	
 	scores <- rbind(status, trend)%>%mutate(goal = "LSP")%>%data.frame()
+	scores <- scores%>%select(goal, dimension, region_id, score)
 	 
-	print(scores) 
-
-  return(scores)
+		
+		
+	return(scores)
 	
 	
 }
 
+FP= function(layers, scores){
+	
+	
+	#read layers production derived from FIS and MAR for weighting
+	##############################################################
+	
+	fis_lyrs <- c("fis_catch")
+	catch <- SelectData2(fis_lyrs)
+	
+	mar_lyrs <- c("mar_production"	)
+	
+	prod <- SelectData2(mar_lyrs)
+	
+	
+	dat_weight <- merge(catch, prod, by = c("scenario_year", "data_year", "rgn_id"))
+	
+	
+	#calculate weight of FIS and MAR
+	################################
+	
+	w_fis <- dat_weight%>%group_by(rgn_id)%>%summarize(w_FIS = sum(ton.x, na.rm = T)/(sum(ton.x, na.rm = T)+sum(ton.y, na.rm = T)))%>%ungroup()
+		 
+	w_mar <- dat_weight%>%group_by(rgn_id)%>%summarize(w_MAR = sum(ton.y, na.rm = T)/(sum(ton.x, na.rm = T)+sum(ton.y, na.rm = T)))%>%ungroup()
+	
+	#merge fis weight and mar weight
+	w <- merge(w_fis, w_mar, by = c("rgn_id"))
+
+	w <- w%>%rename(region_id = rgn_id)
+	
+	print(w)
+	
+	
+	
+	#load scores
+	################
+	s <- scores%>%filter(goal %in% c("FIS", "MAR"))%>%filter(!dimension %in% c("pressures", "resilience"))%>%
+		left_join(w, by = "region_id")%>%mutate(w_MAR = 1 - w_FIS) %>%mutate(weight = ifelse(goal == "FIS", w_FIS, w_MAR))
+		
+		
+	## Some warning messages due to potential mismatches in data:
+	# NA score but there is a weight
+	tmp <- filter(s, goal=='FIS' & is.na(score) & (!is.na(w_FIS) & w_FIS!=0) & dimension == "score")
+	
+	if(dim(tmp)[1]>0){
+    warning(paste0("Check: these regions have a FIS weight but no score: ",
+                   paste(as.character(tmp$region_id), collapse = ", ")))}
+
+	tmp <- filter(s, goal=='MAR' & is.na(score) & (!is.na(w_MAR) & w_MAR!=0) & dimension == "score")
+	if(dim(tmp)[1]>0){
+    warning(paste0("Check: these regions have a MAR weight but no score: ",
+                   paste(as.character(tmp$region_id), collapse = ", ")))}
+
+	# score, but the weight is NA or 0
+	tmp <- filter(s, goal=='FIS' & (!is.na(score) & score > 0) & (is.na(w_FIS) | w_FIS==0) & dimension == "score" & region_id !=0)
+	if(dim(tmp)[1]>0){
+    warning(paste0("Check: these regions have a FIS score but no weight: ",
+                   paste(as.character(tmp$region_id), collapse = ", ")))}
+
+	tmp <- filter(s, goal=='MAR' & (!is.na(score) & score > 0) & (is.na(w_MAR) | w_MAR==0) & dimension == "score" & region_id !=0)
+	if(dim(tmp)[1]>0){
+    warning(paste0("Check: these regions have a MAR score but no weight: ",
+                   paste(as.character(tmp$region_id), collapse = ", ")))}
+	s <- s  %>%
+    group_by(region_id, dimension) %>%
+    summarize(score = weighted.mean(score, weight, na.rm=TRUE)) %>%
+    mutate(goal = "FP") %>%
+    ungroup() %>%
+    select(region_id, goal, dimension, score) %>%
+    data.frame()
+    
+    # return all scores
+	return(rbind(scores, s))
+	
+}
+
+BD = function(scores){
+
+	d <- scores %>%
+    filter(goal %in% c('HAB', 'SPP')) %>%
+    filter(!(dimension %in% c('pressures', 'resilience'))) %>%
+    group_by(region_id, dimension) %>%
+    summarize(score = mean(score, na.rm=TRUE)) %>%
+    mutate(goal = 'BD') %>%
+    data.frame()
+
+  # return all scores
+  return(rbind(scores, d[,c('region_id','goal','dimension','score')]))
+}
+
+
+SP <- function(scores){
+	
+		
+		
+	## to calculate the four SP dimesions, average those dimensions for ICO and LSP
+	s <- scores %>%
+    filter(goal %in% c('ICO','LSP'),
+           dimension %in% c('status', 'trend', 'future', 'score')) %>%
+    group_by(region_id, dimension) %>%
+    summarize(score = mean(score, na.rm=TRUE)) %>%
+    ungroup() %>%
+    arrange(region_id) %>%
+    mutate(goal = "SP") %>%
+    select(region_id, goal, dimension, score) %>%
+    data.frame()
+
+  # return all scores
+  return(rbind(scores, s))
+    
+
+  
+}
 
 
 FinalizeScores = function(layers, conf, scores){
 
+
   # get regions
   rgns = SelectLayersData(layers, layers=conf$config$layer_region_labels, narrow = TRUE)
   
-  print(rgns)
+
   
  
   # add NAs to missing combos (region_id, goal, dimension)
@@ -790,7 +925,9 @@ FinalizeScores = function(layers, conf, scores){
 
   # round scores
   scores$score = round(scores$score, 2)
-
+ 
+  
+ 
   return(scores)
 }
 
