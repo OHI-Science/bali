@@ -9,3 +9,10 @@ cc_acid,ecological,climate_change
 cc_uv,ecological,climate_change
 cc_slr,ecological,climate_change
 cc_sst,ecological,climate_change
+cc_chl,ecological,climate_change
+fp_coral_mortality,ecological ,fishing_pressure
+hd_diseases_mariculture,ecological ,habitat_destruction
+po_bod,ecological ,pollution
+po_coliform,ecological ,pollution
+po_cadmium,ecological ,pollution
+po_nitrat,ecological ,pollution

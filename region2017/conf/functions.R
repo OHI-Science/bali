@@ -344,7 +344,8 @@ CS <- function(layers){
 		#reference values for each habitat and region id, the best values is choosed
 		############################################################################
 		reference_point <- health%>%filter(!is.na(health))%>%group_by(habitat, rgn_id)%>%summarize(reference_point = max(health, na.rm = T))%>%ungroup()
-		
+		#reference_point <- health%>%filter(!is.na(health))%>%group_by(habitat, rgn_id)%>%arrange(data_year)%>%top_n(5,data_year)%>%summarize(reference_point = max(health, na.rm = T))%>%ungroup()
+		print(reference_point)
 		
 		#merge extent, health, total_extent, & reference point
 		######################################################	
@@ -369,6 +370,8 @@ CS <- function(layers){
 		names(am) <- c("rgn_id", "year", "habitat","status_score")
 		
 		
+		
+		
 		#2. calculate trend (latest 5 years)based on status score
 		##########################################################
 		
@@ -391,7 +394,8 @@ CS <- function(layers){
 	
 		status <- am%>%mutate(dimension = "status")%>%rename(region_id = rgn_id, score = score, dimension = dimension)
 		
-				
+		#print(status)
+			
 					
 		
 		#trend CS
