@@ -503,6 +503,13 @@ cs_mangrove_extent,2012,2012
 cs_mangrove_extent,2013,2013
 cs_mangrove_extent,2014,2014
 cs_mangrove_extent,2015,2015
+cs_mangrove_trend,2009,2009
+cs_mangrove_trend,2010,2010
+cs_mangrove_trend,2011,2011
+cs_mangrove_trend,2012,2012
+cs_mangrove_trend,2013,2013
+cs_mangrove_trend,2014,2014
+cs_mangrove_trend,2015,2015
 cs_seagrass_extent,2009,2009
 cs_seagrass_extent,2010,2010
 cs_seagrass_extent,2011,2011
@@ -510,6 +517,13 @@ cs_seagrass_extent,2012,2012
 cs_seagrass_extent,2013,2013
 cs_seagrass_extent,2014,2014
 cs_seagrass_extent,2015,2015
+cs_seagrass_trend,2009,2009
+cs_seagrass_trend,2010,2010
+cs_seagrass_trend,2011,2011
+cs_seagrass_trend,2012,2012
+cs_seagrass_trend,2013,2013
+cs_seagrass_trend,2014,2014
+cs_seagrass_trend,2015,2015
 cs_mangrove_health,2012,2012
 cs_mangrove_health,2013,2013
 cs_mangrove_health,2014,2014
