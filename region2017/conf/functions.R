@@ -319,6 +319,132 @@ AO <- function(layers){
 CS <- function(layers){
 
 
+  # layers for carbon storage
+  extent_lyrs <- c("cs_mangrove_extent", "cs_seagrass_extent")
+  extent_lyrs <- SelectData2(extent_lyrs)
+
+  #print(extent)
+
+  #health
+  ####### updated mangrove health data to be on same scale as seagrass health
+  health_mang<-c("cs_mangrove_health")
+  health_mang <- SelectData2(health_mang)
+  health_mang<-health_mang %>%
+    mutate(health=health*100)%>% ##Teja I assumed that the health scores were on a scale from 0-1 and multiplied by 100
+    select(rgn_id, habitat, scenario_year, data_year, health)
+  health_seagrass <- c("cs_seagrass_health")
+  health_seagrass <- SelectData2(health_seagrass)
+  health_seagrass<-health_seagrass %>%
+    select(rgn_id, habitat, scenario_year, data_year, health)
+
+  health_lyrs<-full_join(health_mang, health_seagrass)
+
+
+
+  trend_lyrs <-
+    c('cs_mangrove_trend',
+      'cs_seagrass_trend')
+ trend_lyrs <- SelectData2(trend_lyrs) #returning empty dataframe
+
+ # get data together:
+  scen_year <- max(extent$scenario_year)
+
+  extent <- AlignManyDataYears(extent_lyrs) %>%
+    filter(scenario_year == scen_year) %>%
+    select(region_id = rgn_id, habitat, extent = km2) %>%
+    mutate(habitat = as.character(habitat))
+
+  health <- AlignManyDataYears(health_lyrs) %>%
+    filter(scenario_year == scen_year) %>%
+    select(region_id = rgn_id, habitat, health) %>%
+    mutate(habitat = as.character(habitat))
+
+  trend <- AlignManyDataYears(trend_lyrs) %>%
+    filter(scenario_year == scen_year) %>%
+    select(region_id = rgn_id, habitat, trend) %>%
+    mutate(habitat = as.character(habitat))
+
+  ## join layer data
+  d <-  extent %>%
+    full_join(health, by = c("region_id", "habitat")) %>%
+    full_join(trend, by = c("region_id", "habitat"))
+
+  ##set reference point for health#
+  #total extent each habitat
+  d <- d%>%
+    group_by(habitat, scenario_year)%>%
+    mutate(total_extent = sum(extent, na.rm = T))%>%
+    ungroup()
+
+  #reference values for each habitat and region id, the best values is choosed
+  ############################################################################
+  d <- d%>%
+    filter(!is.na(health))%>%
+    group_by(habitat, rgn_id)%>%
+    mutate(reference_point = max(health, na.rm = T))%>%
+    ungroup()
+
+
+
+  ## set ranks for each habitat
+  habitat.rank <- c('mangrove'         = 139,
+                    'saltmarsh'        = 210,
+                    'seagrass'         = 83)
+
+  ## limit to CS habitats and add rank
+  d <- d %>%
+    mutate(rank = habitat.rank[habitat],
+           extent = ifelse(extent == 0, NA, extent))
+
+  # status
+  status <- d %>%
+    filter(!is.na(rank) & !is.na(health) & !is.na(extent)) %>%
+    group_by(region_id) %>%
+    summarize(score = pmin(1, sum(rank * health * extent, na.rm = TRUE) / (sum(
+      extent * rank, na.rm = TRUE
+    ))) * 100,
+    dimension = 'status') %>%
+    ungroup()
+
+  # trend
+
+  trend <- d %>%
+    filter(!is.na(rank) & !is.na(trend) & !is.na(extent)) %>%
+    group_by(region_id) %>%
+    summarize(score = sum(rank * trend * extent, na.rm = TRUE) / (sum(extent *
+                                                                        rank, na.rm = TRUE)),
+              dimension = 'trend') %>%
+    ungroup()
+
+
+  scores_CS <- rbind(status, trend)  %>%
+    mutate(goal = 'CS') %>%
+    select(goal, dimension, region_id, score)
+
+
+  ## create weights file for pressures/resilience calculations
+  weights <- extent %>%
+    filter(extent > 0) %>%
+    mutate(rank = habitat.rank[habitat]) %>%
+    mutate(extent_rank = extent * rank) %>%
+    mutate(layer = "element_wts_cs_km2_x_storage") %>%
+    select(rgn_id = region_id, habitat, extent_rank, layer)
+
+  write.csv(
+    weights,
+    sprintf("temp/element_wts_cs_km2_x_storage_%s.csv", scen_year),
+    row.names = FALSE
+  )
+
+  layers$data$element_wts_cs_km2_x_storage <- weights
+
+
+  # return scores
+  return(scores_CS)
+
+
+#Tejaʻs code## starts here
+###
 	#extent
 	#######
 	extent_lyrs <- c("cs_mangrove_extent", "cs_seagrass_extent")
