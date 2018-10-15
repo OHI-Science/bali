@@ -319,35 +319,40 @@ AO <- function(layers){
 CS <- function(layers){
 
 
-  # layers for carbon storage
-  extent_lyrs <- c("cs_mangrove_extent", "cs_seagrass_extent")
-  extent_lyrs <- SelectData2(extent_lyrs)
+  ### Commenting out as transition from `functions.R - SelectData2`` to `ohicore::AlignManyDataYears`
+  # extent_lyrs <- c("cs_mangrove_extent", "cs_seagrass_extent")
+  # extent_lyrs <- SelectData2(extent_lyrs) %>% mutate(habitat = as.character(habitat))
+  #
+  # #print(extent)
+  #
+  # #health
+  # ####### updated mangrove health data to be on same scale as seagrass health
+  # health_mang<-c("cs_mangrove_health")
+  # health_mang <- SelectData2(health_mang) %>% mutate(habitat = as.character(habitat))
+  # health_mang<-health_mang %>%
+  #   mutate(health=health*100)%>% ##Teja I assumed that the health scores were on a scale from 0-1 and multiplied by 100
+  #   select(rgn_id, habitat, scenario_year, data_year, health)
+  # health_seagrass <- c("cs_seagrass_health")
+  # health_seagrass <- SelectData2(health_seagrass) %>% mutate(habitat = as.character(habitat))
+  # health_seagrass<-health_seagrass %>%
+  #   select(rgn_id, habitat, scenario_year, data_year, health)
+  #
+  # health_lyrs<-full_join(health_mang, health_seagrass)
+  #
+  # trend_lyrs <-
+  #   c('cs_mangrove_trend',
+  #     'cs_seagrass_trend')
+  # trend_lyrs <- SelectData2(trend_lyrs) %>% mutate(habitat = as.character(habitat))
 
-  #print(extent)
 
-  #health
-  ####### updated mangrove health data to be on same scale as seagrass health
-  health_mang<-c("cs_mangrove_health")
-  health_mang <- SelectData2(health_mang)
-  health_mang<-health_mang %>%
-    mutate(health=health*100)%>% ##Teja I assumed that the health scores were on a scale from 0-1 and multiplied by 100
-    select(rgn_id, habitat, scenario_year, data_year, health)
-  health_seagrass <- c("cs_seagrass_health")
-  health_seagrass <- SelectData2(health_seagrass)
-  health_seagrass<-health_seagrass %>%
-    select(rgn_id, habitat, scenario_year, data_year, health)
-
-  health_lyrs<-full_join(health_mang, health_seagrass)
-
-
-
-  trend_lyrs <-
-    c('cs_mangrove_trend',
-      'cs_seagrass_trend')
- trend_lyrs <- SelectData2(trend_lyrs) #returning empty dataframe
+  #### This is the AlignManyDataYears method (source functions.R to load)
 
  # get data together:
-  scen_year <- max(extent$scenario_year)
+  scen_year <- layers$data$scenario_year
+
+  extent_lyrs <- c("cs_mangrove_extent", "cs_seagrass_extent")
+  health_lyrs <- c("cs_mangrove_health", "cs_seagrass_health")
+  trend_lyrs <- c("cs_mangrove_trend", "cs_seagrass_trend")
 
   extent <- AlignManyDataYears(extent_lyrs) %>%
     filter(scenario_year == scen_year) %>%
@@ -1102,10 +1107,33 @@ get_data_year <- function(layer_nm, layers=layers) { #layer_nm="le_wage_cur_base
 # it relies on get_data_year(), a function defined immediately above.
 SelectData2 <- function(layer_names){
   data <- data.frame()
-  for(e in layer_names){ # e="le_jobs_cur_base_value"
+  for(e in layer_names){ # e="cs_mangrove_extent"
     data_new <- get_data_year(layer_nm=e, layers=layers)
     names(data_new)[which(names(data_new) == paste0(e, "_year"))] <- "data_year"
     data <- rbind(data, data_new)
   }
   return(data)
+}
+
+
+## From newest version of ohicore, added here at the end of the Bali assessment.
+## https://github.com/OHI-Science/ohicore/blob/master/R/AlignDataYears.R
+AlignDataYears <- function(layer_nm, layers_obj=layers) { #layer_nm="le_wage_cur_base_value"
+
+  all_years <- conf$scenario_data_years %>%
+    dplyr::mutate(scenario_year= as.numeric(scenario_year),
+                  data_year = as.numeric(data_year)) %>%
+    dplyr::filter(layer_name %in% layer_nm) %>%
+    dplyr::select(layer_name, scenario_year, year=data_year)
+
+
+  layer_vals <- layers_obj$data[[layer_nm]]
+
+  layers_years <- all_years %>%
+    dplyr::left_join(layer_vals, by="year") %>%
+    dplyr::select(-layer)
+
+  names(layers_years)[which(names(layers_years)=="year")] <- paste0(layer_nm, "_year")
+
+  return(layers_years)
 }
