@@ -318,41 +318,15 @@ AO <- function(layers){
 
 CS <- function(layers){
 
-
-  ### Commenting out as transition from `functions.R - SelectData2`` to `ohicore::AlignManyDataYears`
-  # extent_lyrs <- c("cs_mangrove_extent", "cs_seagrass_extent")
-  # extent_lyrs <- SelectData2(extent_lyrs) %>% mutate(habitat = as.character(habitat))
-  #
-  # #print(extent)
-  #
-  # #health
-  # ####### updated mangrove health data to be on same scale as seagrass health
-  # health_mang<-c("cs_mangrove_health")
-  # health_mang <- SelectData2(health_mang) %>% mutate(habitat = as.character(habitat))
-  # health_mang<-health_mang %>%
-  #   mutate(health=health*100)%>% ##Teja I assumed that the health scores were on a scale from 0-1 and multiplied by 100
-  #   select(rgn_id, habitat, scenario_year, data_year, health)
-  # health_seagrass <- c("cs_seagrass_health")
-  # health_seagrass <- SelectData2(health_seagrass) %>% mutate(habitat = as.character(habitat))
-  # health_seagrass<-health_seagrass %>%
-  #   select(rgn_id, habitat, scenario_year, data_year, health)
-  #
-  # health_lyrs<-full_join(health_mang, health_seagrass)
-  #
-  # trend_lyrs <-
-  #   c('cs_mangrove_trend',
-  #     'cs_seagrass_trend')
-  # trend_lyrs <- SelectData2(trend_lyrs) %>% mutate(habitat = as.character(habitat))
-
-
-  #### This is the AlignManyDataYears method (source functions.R to load)
+  #### This is the AlignManyDataYears method (source functions.R to load;
+  #### or find it at the end of functions.R)
 
  # get data together:
   scen_year <- layers$data$scenario_year
 
   extent_lyrs <- c("cs_mangrove_extent", "cs_seagrass_extent")
   health_lyrs <- c("cs_mangrove_health", "cs_seagrass_health")
-  trend_lyrs <- c("cs_mangrove_trend", "cs_seagrass_trend")
+  trend_lyrs  <- c("cs_mangrove_trend",  "cs_seagrass_trend")
 
   extent <- AlignManyDataYears(extent_lyrs) %>%
     filter(scenario_year == scen_year) %>%
@@ -374,26 +348,8 @@ CS <- function(layers){
     full_join(health, by = c("region_id", "habitat")) %>%
     full_join(trend, by = c("region_id", "habitat"))
 
-  ##set reference point for health#
-  #total extent each habitat
-  d <- d%>%
-    group_by(habitat, scenario_year)%>%
-    mutate(total_extent = sum(extent, na.rm = T))%>%
-    ungroup()
-
-  #reference values for each habitat and region id, the best values is choosed
-  ############################################################################
-  d <- d%>%
-    filter(!is.na(health))%>%
-    group_by(habitat, rgn_id)%>%
-    mutate(reference_point = max(health, na.rm = T))%>%
-    ungroup()
-
-
-
-  ## set ranks for each habitat
+  ## set ranks for each habitat from global refs
   habitat.rank <- c('mangrove'         = 139,
-                    'saltmarsh'        = 210,
                     'seagrass'         = 83)
 
   ## limit to CS habitats and add rank
@@ -448,9 +404,9 @@ CS <- function(layers){
   return(scores_CS)
 
 
-#Tejaʻs code## starts here
-###
-	#extent
+  ###Tejaʻs code## starts here ----
+  ###
+  #extent
 	#######
 	extent_lyrs <- c("cs_mangrove_extent", "cs_seagrass_extent")
 	extent <- SelectData2(extent_lyrs)
