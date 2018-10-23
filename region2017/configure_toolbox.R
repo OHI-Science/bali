@@ -1,5 +1,7 @@
 ## configure_toolbox.r
 
+rm(list = ls(all = T))
+
 ## configure_toolbox.r ensures all files in your repo are properly configured.
 ## It must be sourced before calculating OHI scores with ohicore::CalculateAll();
 ## it can be sourced here or is also sourced from calculate_scores.r.
@@ -19,12 +21,17 @@ library(zoo)       # install.packages('zoo')
 ## load scenario configuration
 conf = ohicore::Conf('conf')
 
+
+print(1)
+
 ## check that scenario layers files in the \layers folder match layers.csv registration. Layers files are not modified.
 ohicore::CheckLayers('layers.csv', 'layers', flds_id=conf$config$layers_id_fields)
 
+print(2)
 ## load scenario layers for ohicore to access. Layers files are not modified.
 layers = ohicore::Layers('layers.csv', 'layers')
 
+print(3)
 ## select corresponding data year to use for pressures and resilience
-scenario_years <- 2015
+scenario_years <- 2016
 layers$data$scenario_year <- scenario_years

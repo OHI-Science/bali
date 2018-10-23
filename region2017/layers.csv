@@ -1,76 +1,131 @@
 "targets","layer","filename","fld_value","units","fld_id_num","fld_id_chr","fld_category","fld_year","fld_val_num","fld_val_chr","file_exists","year_min","year_max","val_min","val_max","val_0to1","flds_unused","flds_missing","rows_duplicated","num_ids_unique","data_na"
 "FIS","fis_catch","fis_catch_bali2016.csv","ton","ton","rgn_id",,,"year","ton",,TRUE,2000,2016,307.2,47423.3,FALSE,,,,8,FALSE
-"FIS","fis_effort","fis_effort_bali2016.csv","vessel","vessel","rgn_id",,,"year","vessel",,TRUE,2000,2016,157,31015,FALSE,,,,8,FALSE
-"FIS","fis_msy","fis_msy_bali2016.csv","msy","msy","rgn_id",,,"year","msy",,TRUE,2000,2016,39103.3290372204,39103.3290372204,FALSE,,,,8,FALSE
-"MAR","mar_production","mar_mariculture_production_bali2016.csv","ton","ton","rgn_id",,,"year","ton",,TRUE,2000,2016,0.1,531334.3,FALSE,,,,8,FALSE
-"MAR","mar_extent","mar_mariculture_area_extent_bali2016.csv","km2","km2","rgn_id",,,"year","km2",,TRUE,2006,2015,0,6.8777,FALSE,,,,8,FALSE
-"AO","ao_banyar","ao_Banyar_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2005,2015,0.085,44.843,FALSE,,,,8,FALSE
-"AO","ao_banyar_msy","ao_Banyar_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,6.26650878756988,6.26650878756988,FALSE,,,,8,FALSE
-"AO","ao_gulamah","ao_Gulamah_Tigawaja_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.018,2.329,FALSE,,,,8,FALSE
-"AO","ao_gulamah_msy","ao_Gulamah_Tigawaja_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,3.68622009412726,3.68622009412726,FALSE,,,,8,FALSE
-"AO","ao_terbang","ao_Ikan_terbang_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,5.167,1504.646,FALSE,,,,8,FALSE
-"AO","ao_terbang_msy","ao_Ikan_terbang_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,1143.64552534317,1143.64552534317,FALSE,,,,8,FALSE
-"AO","ao_kakap","ao_Kakap_merah_Bambangan_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.508,773.961,FALSE,,,,8,FALSE
-"AO","ao_kakap_msy","ao_Kakap_merah_Bambangan_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,348.975756903638,348.975756903638,FALSE,,,,8,FALSE
-"AO","ao_kembung","ao_Kembung_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,2.163,466.772,FALSE,,,,8,FALSE
-"AO","ao_kembung_msy","ao_Kembung_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,1.07394370459585,1.07394370459585,FALSE,,,,8,FALSE
-"AO","ao_kerapu","ao_Kerapu_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,3.453,382.7,FALSE,,,,8,FALSE
-"AO","ao_kerapu_msy","ao_Kerapu_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,32.3402427353226,32.3402427353226,FALSE,,,,8,FALSE
-"AO","ao_kuniran","ao_Kuniran_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.055,3.433,FALSE,,,,8,FALSE
-"AO","ao_kuniran_msy","ao_Kuniran_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,6.48225332910153,6.48225332910153,FALSE,,,,8,FALSE
-"AO","ao_kurisi","ao_Kurisi_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.867,196.783,FALSE,,,,8,FALSE
-"AO","ao_kurisi_msy","ao_Kurisi_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,1895.75492112709,1895.75492112709,FALSE,,,,8,FALSE
-"AO","ao_kuwe","ao_Kuwe_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.134,77.414,FALSE,,,,8,FALSE
-"AO","ao_kuwe_msy","ao_Kuwe_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,92.2558300745984,92.2558300745984,FALSE,,,,8,FALSE
-"AO","ao_layang","ao_Layang_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,9.877,2490.741,FALSE,,,,8,FALSE
-"AO","ao_layang_msy","ao_Layang_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,126.63193726446,126.63193726446,FALSE,,,,8,FALSE
-"AO","ao_layur","ao_Layur_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,2.967,521.666,FALSE,,,,8,FALSE
-"AO","ao_layur_msy","ao_Layur_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,595.094353735144,595.094353735144,FALSE,,,,8,FALSE
-"AO","ao_manyung","ao_Manyung_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.082,211.783,FALSE,,,,8,FALSE
-"AO","ao_manyung_msy","ao_Manyung_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,80.677541441703,80.677541441703,FALSE,,,,8,FALSE
-"AO","ao_swanggi","ao_Swanggi_Mata_besar_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.045,13.765,FALSE,,,,8,FALSE
-"AO","ao_swanggi_msy","ao_Swanggi_Mata_besar_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,0.100499925702008,0.100499925702008,TRUE,,,,8,FALSE
-"CS CP HAB","cs_mangrove_trend","hab_mangrove_trend_bali2016.csv","trend","trend","rgn_id",,"habitat","year","trend",,TRUE,2009,2015,-0.0141607142857081,0.394153571428468,FALSE,,,,8,FALSE
-"CS CP HAB","cs_seagrass_trend","hab_seagrass_trend_bali2016.csv","trend","trend","rgn_id",,"habitat","year","trend",,TRUE,2009,2015,-0.2805,0.092321429,FALSE,,,,8,FALSE
+"FIS","fis_effort","fis_effort_bali2016.csv","vessel","vessel","rgn_id",,,"year","vessel",,TRUE,2000,2016,157,6471,FALSE,,,,8,FALSE
+"FIS","fis_msy","fis_msy_bali2016.csv","msy","msy","rgn_id",,,"year","msy",,TRUE,2000,2016,21379.4957441172,21379.4957441172,FALSE,,,,8,FALSE
+"MAR","mar_production","mar_mariculture_production_bali2016.csv","ton","ton","rgn_id",,,"year","ton",,TRUE,2000,2017,0.0299999999988358,24613.3,FALSE,,,,8,FALSE
+"MAR","mar_extent","mar_mariculture_area_extent_bali2016.csv","km2","km2","rgn_id",,,"year","km2",,TRUE,2006,2015,1e-04,5.5053,FALSE,,,,8,FALSE
+"AO","ao_banyar","ao_Banyar_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2005,2015,0.029,49.161,FALSE,,,,8,FALSE
+"AO","ao_banyar_msy","ao_Banyar_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,35.2504999336533,35.2504999336533,FALSE,,,,8,FALSE
+"AO","ao_gulamah","ao_Gulamah_Tigawaja_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.016,2.527,FALSE,,,,8,FALSE
+"AO","ao_gulamah_msy","ao_Gulamah_Tigawaja_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,3.79205305513218,3.79205305513218,FALSE,,,,8,FALSE
+"AO","ao_terbang","ao_Ikan_terbang_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,6.33,1628.682,FALSE,,,,8,FALSE
+"AO","ao_terbang_msy","ao_Ikan_terbang_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,1160.34536778186,1160.34536778186,FALSE,,,,8,FALSE
+"AO","ao_kakap","ao_Kakap_merah_Bambangan_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.695,837.763,FALSE,,,,8,FALSE
+"AO","ao_kakap_msy","ao_Kakap_merah_Bambangan_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,331.325070994793,331.325070994793,FALSE,,,,8,FALSE
+"AO","ao_kembung","ao_Kembung_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,2.864,587.301,FALSE,,,,8,FALSE
+"AO","ao_kembung_msy","ao_Kembung_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,166.5626984057,166.5626984057,FALSE,,,,8,FALSE
+"AO","ao_kerapu","ao_Kerapu_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,2.81,359.519,FALSE,,,,8,FALSE
+"AO","ao_kerapu_msy","ao_Kerapu_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,110.086260355987,110.086260355987,FALSE,,,,8,FALSE
+"AO","ao_kuniran","ao_Kuniran_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.029,2.651,FALSE,,,,8,FALSE
+"AO","ao_kuniran_msy","ao_Kuniran_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,8.45634868351263,8.45634868351263,FALSE,,,,8,FALSE
+"AO","ao_kurisi","ao_Kurisi_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.799,247.595,FALSE,,,,8,FALSE
+"AO","ao_kurisi_msy","ao_Kurisi_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,361.167544610647,361.167544610647,FALSE,,,,8,FALSE
+"AO","ao_kuwe","ao_Kuwe_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.211,59.332,FALSE,,,,8,FALSE
+"AO","ao_kuwe_msy","ao_Kuwe_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,82.53097259686,82.53097259686,FALSE,,,,8,FALSE
+"AO","ao_layang","ao_Layang_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,11.431,3000.5,FALSE,,,,8,FALSE
+"AO","ao_layang_msy","ao_Layang_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,850.677137339095,850.677137339095,FALSE,,,,8,FALSE
+"AO","ao_layur","ao_Layur_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,3.551,564.669,FALSE,,,,8,FALSE
+"AO","ao_layur_msy","ao_Layur_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,582.75615756798,582.75615756798,FALSE,,,,8,FALSE
+"AO","ao_manyung","ao_Manyung_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.112,255.127,FALSE,,,,8,FALSE
+"AO","ao_manyung_msy","ao_Manyung_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,126.785064984928,126.785064984928,FALSE,,,,8,FALSE
+"AO","ao_swanggi","ao_Swanggi_Mata_besar_bali2016.csv","catch","ton","rgn_id",,"species","year","catch",,TRUE,2000,2015,0.052,17.32,FALSE,,,,8,FALSE
+"AO","ao_swanggi_msy","ao_Swanggi_Mata_besar_msy_bali2016.csv","msy","msy","rgn_id",,"species","year","msy",,TRUE,2000,2015,0.721733188310669,0.721733188310669,TRUE,,,,8,FALSE
 "CS CP HAB","cs_mangrove_extent","cs_mangrove_extent_bali2016.csv","km2","km2","rgn_id",,"habitat","year","km2",,TRUE,2009,2015,2.165,7.8767,FALSE,,,,8,FALSE
 "CS CP HAB","cs_seagrass_extent","cs_seagrass_extent_bali2016.csv","km2","km2","rgn_id",,"habitat","year","km2",,TRUE,2009,2015,0.12,6.85,FALSE,,,,8,FALSE
-"CS CP HAB","cs_mangrove_health","cs_mangrove_health_bali2016.csv","health","ndvi","rgn_id",,"habitat","year","health",,TRUE,2012,2016,0.2183856393,0.742944,TRUE,,,,8,FALSE
-"CS CP HAB","cs_seagrass_health","cs_seagrass_health_bali2016.csv","health","percentage","rgn_id",,"habitat","year","health",,TRUE,2007,2016,62.87,89.42,FALSE,,,,8,FALSE
+"CS CP HAB","cs_mangrove_health","cs_mangrove_health_bali2016.csv","health","ndvi","rgn_id",,"habitat","year","health",,TRUE,2009,2016,67.93,84.38,FALSE,,,,8,FALSE
+"CS CP HAB","cs_seagrass_health","cs_seagrass_health_bali2016.csv","health","percentage","rgn_id",,"habitat","year","health",,TRUE,2009,2016,62.87,89.42,FALSE,,,,8,FALSE
 "CP HAB","cp_coral_extent","cp_coral_extent_bali2016.csv","km2","km2","rgn_id",,"habitat","year","km2",,TRUE,2009,2015,0.75,44.59,FALSE,,,,8,FALSE
 "CP HAB","cp_coral_health","cp_coral_health_bali2016.csv","health","percentage","rgn_id",,"habitat","year","health",,TRUE,2007,2016,41.4,52.86,FALSE,,,,8,FALSE
-"TR","tr_nb_tourist","tr_tourist_bali2016.csv","nb_tourist","person","rgn_id",,,"year","nb_tourist",,TRUE,2001,2017,9761,3123205,FALSE,,,,8,FALSE
 "TR","tr_ittc","tr_ittc_bali2016.csv","index","index","rgn_id",,,"year","index",,TRUE,2000,2017,3.7,4.2,FALSE,,,,8,FALSE
-"SPP","spp_status","spp_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,86.4811320754717,92.0786885245902,FALSE,,,,8,FALSE
-"SPP","spp_trend","spp_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.1744,-0.0889,FALSE,,,,8,FALSE
+"TR","tr_lengthstay_international","tr_length_stay_international_tourist_nonstar_hotel_bali2016.csv","mean_day","day","rgn_id",,,"year","mean_day",,TRUE,2007,2017,1.025,4.96916666666667,FALSE,,,,8,FALSE
+"TR","tr_lengthstay_domestic","tr_length_stay_domestic_tourist_nonstar_hotel_bali2016.csv","mean_day","day","rgn_id",,,"year","mean_day",,TRUE,2007,2017,1.03,5.095,FALSE,,,,8,FALSE
+"TR NP","tr_occupancy_rate","tr_occupancy_rate_nonstar_hotel_bali2016.csv","percentage","percentage","rgn_id",,,"year","percentage",,TRUE,2007,2017,10.4491666666667,56.5758333333333,FALSE,,,,8,FALSE
+"SPP","spp_status","spp_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,86.4811320754717,97.5695833333333,FALSE,,,,8,FALSE
+"SPP","spp_trend","spp_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.1744,-0.1034,FALSE,,,,8,FALSE
 "ICO","ico_status","ico_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,38.6996904024768,38.6996904024768,FALSE,,,,8,FALSE
 "ICO","ico_trend","ico_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.181818181818182,-0.181818181818182,FALSE,,,,8,FALSE
-"LSP","lsp_status","lsp_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,1.42780446715356,89.1878270432696,FALSE,,,,8,FALSE
+"LSP","lsp_status","lsp_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,16.9608668956091,64.5522607049717,FALSE,,,,8,FALSE
 "LSP","lsp_trend","lsp_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,0.623402684000008,0.623402684000008,TRUE,,,,8,FALSE
-"spatial","rgn_area","rgn_area.csv","area_km2","km2","rgn_id",,,,"area_km2",,TRUE,,,5947885.10452,5947885.10452,FALSE,,,,8,FALSE
+"spatial","rgn_area","rgn_area.csv","area_km2","km2","rgn_id",,,,"area_km2",,TRUE,,,96.5405621792,1184.0009738477,FALSE,,,,8,FALSE
 "spatial","rgn_georegions","rgn_georegions_gl2016.csv","georgn_id","UN regions","rgn_id",,"level",,"georgn_id",,TRUE,,,1,142,FALSE,,,,8,FALSE
 "spatial","rgn_global","rgn_global.csv","label","label","rgn_id",,,,,"label",TRUE,,,,,FALSE,,,,8,
 "spatial","rgn_labels","rgn_labels.csv","label","label","rgn_id",,"type",,,"label",TRUE,,,,,FALSE,,,,8,
 "CP","element_wts_cp_km2_x_protection","element_wts_cp_km2_x_protection.csv","extent_rank","km2","rgn_id",,"habitat",,"extent_rank",,TRUE,,,0.75,30.3142857142857,FALSE,"layer",,,8,FALSE
 "CS","element_wts_cs_km2_x_storage","element_wts_cs_km2_x_storage.csv","extent_rank","km2","rgn_id",,"habitat",,"extent_rank",,TRUE,,,40.11,1216.44,FALSE,"layer",,,8,FALSE
 "HAB","element_wts_hab_pres_abs","element_wts_hab_pres_abs.csv","boolean","km2","rgn_id",,"habitat",,"boolean",,TRUE,,,1,1,TRUE,"layer",,,8,FALSE
-"CP pressureCS pressureHAB pressureICO pressureSPP pressure","cc_acid","cc_acid_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2011,2015,0.186084959496775,0.223093248727043,TRUE,,,,8,FALSE
-"CP pressureCS pressureHAB pressureICO pressureSPP pressure","cc_sst","cc_sst_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.0350107113622795,0.225764475100932,TRUE,,,,8,FALSE
-"AO pressureCP pressureCS pressureHAB pressureTR pressureSPP pressureLSP pressure","cc_slr","cc_slr_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.0713812807707852,0.320206478619076,TRUE,,,,8,FALSE
-"CP pressureHAB pressureTR pressure","cc_uv","cc_uv_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.0787973040549497,0.249537716145108,TRUE,,,,8,FALSE
-"MAR pressureFIS pressureSPP pressure","po_chemicals","po_chemicals_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.106212614731962,0.106823913187959,TRUE,,,,8,FALSE
-"FIS pressureAO pressureSPP pressure","po_nutrients","po_nutrients_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.013115834156569,0.0137030133874381,TRUE,,,,8,FALSE
-"AO pressureCP pressureCS pressureHAB pressureMAR pressureTR pressure","po_nutrients_3nm","po_nutrients_3nm_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.116000808391297,0.121048985884284,TRUE,,,,8,FALSE
-"AO pressureCP pressureCS pressureHAB pressureICO pressureMAR pressureTR pressure","po_chemicals_3nm","po_chemicals_3nm_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.177240230521493,0.182942334685571,TRUE,,,,8,FALSE
-"FIS pressureMAR pressureAO pressureCP pressureCS pressureHAB pressureTR pressureSPP pressureICO pressureLSP pressure","ss_spi","ss_spi_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2016,2016,0.349,0.349,TRUE,,,,8,FALSE
-"FIS pressureMAR pressureAO pressureCP pressureCS pressureHAB pressureTR pressureSPP pressureICO pressureLSP pressure","ss_wgi","ss_wgi_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2016,2016,0.552207024892167,0.552207024892167,TRUE,,,,8,FALSE
-"FIS resilienceAO resilience","fp_mpa","fp_mpa_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
-"FIS resilienceAO resilience","fp_fishing_gear","fp_fishing_gear_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
-"FIS resilienceMAR resilienceAO resilienceCP resilienceCS resilienceHAB resilienceTR resilienceSPP resilienceICO resilienceLSP resilience","wgi_bali","wgi_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,"year","resilience_score",,TRUE,2016,2016,0.447792975107833,0.447792975107833,TRUE,,,,8,FALSE
-"FIS resilienceMAR resilienceAO resilienceCP resilienceCS resilienceHAB resilienceTR resilienceSPP resilienceICO resilienceLSP resilience","spi_bali","spi_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,"year","resilience_score",,TRUE,2016,2016,0.651,0.651,TRUE,,,,8,FALSE
-"FIS pressure","fp_coral_mortality","fp_coral_index_mortality_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2011,2015,0,1,TRUE,,,,8,FALSE
-"FIS pressure","cc_chl","cc_chl_anomaly_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2017,0,1,TRUE,,,,8,FALSE
-"MAR pressure","hd_diseases_mariculture","hd_diseases_mariculture_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
-"MAR pressure","po_bod","po_bod_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2009,2015,0,1,TRUE,,,,8,FALSE
-"MAR pressure","po_coliform","po_coliform_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2009,2015,0,1,TRUE,,,,8,FALSE
-"MAR pressure","po_cadmium","po_cadmium_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2009,2012,0,1,TRUE,,,,8,FALSE
-"MAR pressure","po_nitrat","po_nitrat_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2009,2015,0,1,TRUE,,,,8,FALSE
+"CP pressureCS pressureHAB pressureSPP pressureNP pressureBD pressure","cc_acid","cc_acid_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2011,2015,0.186084959496775,0.223093248727043,TRUE,,,,8,FALSE
+"CP pressureAO pressureCS pressureHAB pressureSPP pressureNP pressureFP pressureBD pressure","cc_sst","cc_sst_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.0350107114,0.2257644751,TRUE,,,,8,FALSE
+"AO pressureCP pressureCS pressureHAB pressureTR pressureSPP pressureLSP pressureBD pressureSP pressure","cc_slr","cc_slr_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.0713812807707852,0.320206478619076,TRUE,,,,8,FALSE
+"CP pressureHAB pressureTR pressureSPP pressureBD pressure","cc_uv","cc_uv_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.0787973040549497,0.249537716145108,TRUE,,,,8,FALSE
+"MAR pressureFIS pressureFP pressure","po_chemicals","po_chemicals_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.106212614731962,0.106823913187959,TRUE,,,,8,FALSE
+"FIS pressureFP pressure","po_nutrients","po_nutrients_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.013115834156569,0.0137030133874381,TRUE,,,,8,FALSE
+"AO pressureCP pressureCS pressureHAB pressureMAR pressureTR pressureSPP pressureICO pressureNP pressureCW pressureFP pressureBD pressureSP pressure","po_nutrients_3nm","po_nutrients_3nm_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.116000808391297,0.121048985884284,TRUE,,,,8,FALSE
+"AO pressureCP pressureCS pressureHAB pressureICO pressureMAR pressureTR pressureSPP pressureICO pressureNP pressureCW pressureFP pressureBD pressureSP pressure","po_chemicals_3nm","po_chemicals_3nm_gl2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2016,0.177240230521493,0.182942334685571,TRUE,,,,8,FALSE
+"FIS pressureMAR pressureAO pressureCP pressureCS pressureHAB pressureTR pressureSPP pressureICO pressureLSP pressureNP pressureCW pressureFP pressureBD pressureSP pressure","ss_spi","ss_spi_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2016,2016,0.349,0.349,TRUE,,,,8,FALSE
+"FIS pressureMAR pressureAO pressureCP pressureCS pressureHAB pressureTR pressureSPP pressureICO pressureLSP pressureNP pressureCW pressureFP pressureBD pressureSP pressure","ss_wgi","ss_wgi_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2016,2016,0.552207024892167,0.552207024892167,TRUE,,,,8,FALSE
+"FIS resilienceAO resilienceTR resilienceSPP resilienceLSP resilienceCW resilienceFP resilienceBD resilienceSP resilience","fp_mpa","fp_mpa_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"FIS resilienceAO resilienceFP resilience","fp_fishing_gear","fp_fishing_gear_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"FIS resilienceMAR resilienceAO resilienceCP resilienceCS resilienceHAB resilienceTR resilienceSPP resilienceICO resilienceLSP resilienceNP resilienceFP resilienceBD resilienceSP resilience","wgi_bali","wgi_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,"year","resilience_score",,TRUE,2016,2016,0.447792975107833,0.447792975107833,TRUE,,,,8,FALSE
+"FIS resilienceMAR resilienceAO resilienceCP resilienceCS resilienceHAB resilienceTR resilienceSPP resilienceICO resilienceLSP resilienceNP resilienceFP resilienceBD resilienceSP resilience","spi_bali","spi_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,"year","resilience_score",,TRUE,2016,2016,0.651,0.651,TRUE,,,,8,FALSE
+"FIS pressureAO pressureCP pressureHAB pressureSPP pressureTR pressureLSP pressureFP pressureBD pressureSP pressure","fp_coral_mortality","fp_coral_index_mortality_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2011,2015,0,1,TRUE,,,,8,FALSE
+"FIS pressureAO pressureFP pressureBD pressure","cc_chl","cc_chl_anomaly_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2012,2017,0,1,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","hd_diseases_mariculture","hd_diseases_mariculture_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_bod","po_bod_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0,0.0818140437459572,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_cadmium","po_cadmium_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0.0275402639169068,0.981016616044987,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_cod","po_cod_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0,0.0754112606967233,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_coliform","po_coliform_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0,0.165094339622642,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_do","po_do_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0.595411944202267,0.866227114210985,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_fosfat","po_fosfat_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0.0091520861372817,0.581915657245397,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_nitrat","po_nitrat_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0.00195590327169275,0.121790540540711,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_ph","po_ph_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0,0.0943396226415091,TRUE,,,,8,FALSE
+"MAR pressureFP pressure","po_water_clarity","po_water_clarity_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2016,2016,0.0280713342140029,0.187252311756935,TRUE,,,,8,FALSE
+"MAR resilienceNP resilienceFP resilience","g_addition_mariculture","g_addition_mariculture_product_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,0,TRUE,,,,8,FALSE
+"MAR resilienceNP resilienceFP resilience","g_government_support","g_government_support_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"MAR resilienceNP resilienceFP resilience","g_mariculture_regulation","g_mariculture_regulation_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"AO resilience","g_gear_diversity","g_ao_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,"year","resilience_score",,TRUE,2015,2015,0.150121624170979,0.784129890092049,TRUE,,,,8,FALSE
+"CS pressureCP pressureHAB pressureSPP pressureLSP pressureCW pressureBD pressureSP pressure","hd_waste_mangrove","hd_waste_mangrove_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CS pressureCP pressureHAB pressureSPP pressureLSP pressureCW pressureBD pressureSP pressure","hd_mangrove_woods","hd_use_mangrove_woods_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CS pressureCP pressureHAB pressureSPP pressureLSP pressureCW pressureBD pressureSP pressure","hd_mangrove_conversion","hd_mangrove_conversion_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CS pressureCP pressureHAB pressureSPP pressureLSP pressureBD pressureSP pressure","hd_mangrove_extent_reduction","hd_mangrove_extent_reduction_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,1,1,TRUE,,,,8,FALSE
+"CS pressureCP pressureHAB pressureSPP pressureLSP pressureBD pressureSP pressure","hd_seagrass_extent_reduction","hd_seagrass_extent_reduction_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0.754614549402823,1,TRUE,,,,8,FALSE
+"CS resilienceCP resilienceHAB resilicenceSPP resilienceLSP resilienceCW resilienceBD resilienceSP resilience","hd_mangrove_communities","hd_mangrove_communities_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CS resilienceCP resilienceHAB resilicenceSPP resilienceLSP resilienceCW resilienceBD resilienceSP resilience","hd_mangrove_management","hd_mangrove_management_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CS resilienceCP resilienceHAB resilicenceSPP resilienceLSP resilienceCW resilienceBD resilienceSP resilience","hd_status_kawasan_mangrove","hd_status_kawasan_mangrove_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CP pressureHAB pressureSPP pressureTR pressureLSP pressureBD pressureSP pressure","hd_coral_extent_reduction","hd_coral_extent_reduction_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,1,1,TRUE,,,,8,FALSE
+"CP pressureCS pressureHAB pressureICO pressureBD pressureSP pressure","hd_cp_abrasion","hd_cp_abrasion_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2015,2015,0,0.938925081433225,TRUE,,,,8,FALSE
+"CP resilienceHAB resilienceCS resilienceSPP resilienceLSP resilienceNP resilienceCW resilienceBD resilienceSP resilience","hd_habitat_rehabilitation","hd_habitat_rehabilitation_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CP resilienceHAB resilienceSPP resilienceTR resilienceLSP resilienceCW resilienceBD resilienceSP resilience","hd_coral_communities","hd_coral_communities_rehabilitation_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CP pressureCS pressureHAB pressureSPP pressureLSP pressureCW pressureBD pressureSP pressure","hd_vessel_activities","hd_vessel_activities_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"CP pressureCS pressureHAB pressureSPP pressureNP pressureCW pressureBD pressure","hd_coastal_sedimentation","hd_coastal_sedimentation_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"CP pressureHAB pressureSPP pressureTR pressureLSP pressureBD pressureSP pressure","hd_coral_bleaching","hd_coral_bleaching_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CP pressureCS pressureHAB pressureSPP pressureLSP pressureNP pressureBD pressureSP pressure","hd_freshwater_discharge","hd_freshwater_discharge_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"CP pressureCS pressureHAB pressureSPP pressureLSP pressureNP pressureCW pressureBD pressureSP pressure","hd_marine_tourism","hd_marine_tourism_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"CP pressureHAB pressureSPP pressureLSP pressureBD pressureSP pressure","hd_fishing_pressure","hd_fishing_pressure_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CP resilienceHAB resilienceSPP resilienceTR resilienceLSP resilienceBD resilienceSP resilience","g_coral_biodiversity","g_coral_biodiversity_bali2018.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"CS resilienceCP resilienceHAB resilicenceSPP resilienceLSP resilienceBD resilienceSP resilience","g_seagrass_biodiversity","g_seagrass_biodiversity_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"TR resilience","g_tourism_awarness_village","g_tourism_awarness_village_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"SPP resilienceLSP resilienceCW resilienceBD resilienceSP resilience","hd_coral_transplation","hd_coral_transplation_communities_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"SPP resilienceLSP resilienceCW resilienceBD resilienceSP resilience","hd_coral_enforcement","hd_coral_enforcement_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"LSP pressureSP pressure","hd_nb_population","hd_nb_population_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,"year","pressure_score",,TRUE,2016,2016,0,0.876532769556025,TRUE,,,,8,FALSE
+"NP","np_seaweed_production","np_seaweed_production_bali2016.csv","values","ton","rgn_id",,,"year","values",,TRUE,2000,2017,13.42,247890,FALSE,,,,8,FALSE
+"CW","cw_bod_status","cw_bod_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,0.935483870967742,0.935483870967742,TRUE,,,,8,FALSE
+"CW","cw_bod_trend","cw_bod_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.498893116883122,-0.267017222222232,FALSE,,,,8,FALSE
+"CW","cw_cadmium_status","cw_cadmium_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,0.67741935483871,0.67741935483871,TRUE,,,,8,FALSE
+"CW","cw_cadmium_trend","cw_cadmium_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.00290666666666648,0.0158333333333505,FALSE,,,,8,FALSE
+"CW","cw_cod_status","cw_cod_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,0.741935483870968,0.935483870967742,TRUE,,,,8,FALSE
+"CW","cw_cod_trend","cw_cod_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.805044415584424,-0.576120000000006,FALSE,,,,8,FALSE
+"CW","cw_coliform_status","cw_coliform_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,0.903225806451613,1,TRUE,,,,8,FALSE
+"CW","cw_coliform_trend","cw_coliform_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.266714285714289,-0.06306666666667,FALSE,,,,8,FALSE
+"CW","cw_do_status","cw_do_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"CW","cw_do_trend","cw_do_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.00767333333333669,0.0518410000000011,FALSE,,,,8,FALSE
+"CW","cw_fosfat_status","cw_fosfat_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,0.67741935483871,0.741935483870968,TRUE,,,,8,FALSE
+"CW","cw_fosfat_trend","cw_fosfat_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.00595816666666682,0.00884374999999931,FALSE,,,,8,FALSE
+"CW","cw_nitrat_status","cw_nitrat_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,0.67741935483871,0.741935483870968,TRUE,,,,8,FALSE
+"CW","cw_nitrat_trend","cw_nitrat_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.55378466666667,-0.0464099999998523,FALSE,,,,8,FALSE
+"CW","cw_ph_status","cw_ph_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,0.870967741935484,0.935483870967742,TRUE,,,,8,FALSE
+"CW","cw_ph_trend","cw_ph_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,0.00619233766233793,0.0144333333333336,TRUE,,,,8,FALSE
+"CW","cw_water_clarity_status","cw_water_clarity_status_bali2016.csv","score","status_score","rgn_id",,,,"score",,TRUE,,,1,1,TRUE,,,,8,FALSE
+"CW","cw_water_clarity_trend","cw_water_clarity_trend_bali2016.csv","score","trend_score","rgn_id",,,,"score",,TRUE,,,-0.00396000000000075,0.0384800000000008,FALSE,,,,8,FALSE
+"ICO pressureSP pressure","sp_stranded_mammal","sp_stranded_mammal_bali2016.csv","pressure_score","scaled 0-1","rgn_id",,,,"pressure_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"ICO resilienceSP resilience","g_megafauna","g_megafauna_bali2016.csv","resilience_score","scaled 0-1","rgn_id",,,,"resilience_score",,TRUE,,,0,1,TRUE,,,,8,FALSE
+"FP","fp_wildcaught_weight","fp_wildcaught_weight_bali2016.csv","w_fis","proportion","rgn_id",,,"year","w_fis",,TRUE,2000,2016,0.0644354486192675,1,TRUE,,,,8,FALSE

@@ -86,6 +86,7 @@ PlotFlower <- function(region_plot     = NA,
     inner_join(conf, by="goal") %>%
     arrange(order_color)
 
+	
 
   ## set up positions for the bar centers:
   ## cumulative sum of weights (incl current) minus half the current weight
@@ -100,7 +101,10 @@ PlotFlower <- function(region_plot     = NA,
     ungroup() %>%
     filter(weight != 0) %>%
     ## set up for displaying NAs
-    mutate(plot_NA = ifelse(is.na(score), 100, NA))
+    mutate(plot_NA = ifelse(is.na(score), 0, NA))
+    #mutate(plot_NA = ifelse(is.na(score), 100, NA))
+    
+        
 
 
   ## read if file for weights for FIS vs. MAR ----
@@ -149,11 +153,16 @@ PlotFlower <- function(region_plot     = NA,
     dplyr::select(name_supra, pos_supra) %>%
     unique() %>%
     as.data.frame()
+    
+   
 
   ## calculate arc: stackoverflow.com/questions/38207390/making-curved-text-on-coord-polar ----
   supra_df <- supra %>%
     mutate(myAng = seq(-70, 250, length.out = dim(supra)[1])) %>%
+    
     filter(!is.na(pos_supra))
+    
+	print(supra_df)
 
 
   ## more labeling and parameters ----
@@ -161,7 +170,7 @@ PlotFlower <- function(region_plot     = NA,
     dplyr::select(goal, name_flower)
 
   p_limits <- c(0, score_df$pos_end[1])
-  blank_circle_rad <- 42
+  blank_circle_rad <- 45
   light_line <- 'grey90'
   white_fill <- 'white'
   light_fill <- 'grey80'
@@ -221,8 +230,8 @@ PlotFlower <- function(region_plot     = NA,
     ## inject weights for FIS vs. MAR ----
     if ( length(w_fn) > 0 ) {
       ## inject FIS/MAR weights
-      plot_df$weight[plot_df$goal == "FIS"] <- w$w_fis[w$rgn_id == region]
-      plot_df$weight[plot_df$goal == "MAR"] <- 1 - w$w_fis[w$rgn_id == region]
+      #plot_df$weight[plot_df$goal == "FIS"] <- w$w_fis[w$rgn_id == region]
+      #plot_df$weight[plot_df$goal == "MAR"] <- 1 - w$w_fis[w$rgn_id == region]
 
       ## recalculate pos with injected weights arrange by pos for proper ordering
       plot_df <- plot_df %>%
@@ -247,6 +256,7 @@ PlotFlower <- function(region_plot     = NA,
       plot_obj <- plot_obj +
         geom_bar(aes(x = pos, y = plot_NA),
                  stat = 'identity', color = light_line, fill = light_fill, size = .2)
+                 
     }
 
     ## establish the basics of the flower plot
@@ -296,7 +306,7 @@ PlotFlower <- function(region_plot     = NA,
     plot_obj <- plot_obj +
       geom_text(aes(label = name_flower, x = pos, y = 120),
                 hjust = .5, vjust = .5,
-                size = 3,
+                size = 2.8,
                 color = dark_line)
 
 
