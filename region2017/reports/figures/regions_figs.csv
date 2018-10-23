@@ -1,0 +1,10 @@
+region_id,region_name,flower_png
+0,Bali,~/github/bali/region2017/reports/figures//flower_Bali.png
+1,Jembrana,~/github/bali/region2017/reports/figures//flower_Jembrana.png
+2,Tabanan,~/github/bali/region2017/reports/figures//flower_Tabanan.png
+3,Badung,~/github/bali/region2017/reports/figures//flower_Badung.png
+4,Gianyar,~/github/bali/region2017/reports/figures//flower_Gianyar.png
+5,Klungkung,~/github/bali/region2017/reports/figures//flower_Klungkung.png
+7,Karangasem,~/github/bali/region2017/reports/figures//flower_Karangasem.png
+8,Buleleng,~/github/bali/region2017/reports/figures//flower_Buleleng.png
+9,Denpasar,~/github/bali/region2017/reports/figures//flower_Denpasar.png
