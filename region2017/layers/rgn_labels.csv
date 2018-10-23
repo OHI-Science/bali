@@ -1,9 +1,9 @@
 rgn_id,type,label
-1,eez,denpasar
-2,eez,badung
-3,eez,tabanan
-4,eez,jembrana
-5,eez,buleleng
-6,eez,karangasem
-7,eez,klungkung
-8,eez,gianyar
+1,eez,Jembrana
+2,eez,Tabanan
+3,eez,Badung
+4,eez,Gianyar
+5,eez,Klungkung
+7,eez,Karangasem
+8,eez,Buleleng
+9,eez,Denpasar
